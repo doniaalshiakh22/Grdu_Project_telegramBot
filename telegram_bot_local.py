@@ -1,5 +1,8 @@
 import os
 import time
+import base64
+import io
+import json
 import requests
 from dotenv import load_dotenv
 
@@ -47,15 +50,105 @@ def send_message(text):
     text = str(text)
     chunks = [text[i:i+3800] for i in range(0, len(text), 3800)] or [""]
     ok_all = True
+    errors = []
+
     for part in chunks:
         js = tg_request("sendMessage", {
             "chat_id": TELEGRAM_CHAT_ID,
             "text": part
         }, timeout=30)
-        ok_all = ok_all and bool(js.get("ok"))
+
         if not js.get("ok"):
+            ok_all = False
+            errors.append(js)
             print("sendMessage error:", js)
-    return ok_all
+
+    return ok_all, errors
+
+
+def send_photo_data_url(data_url, caption=""):
+    try:
+        if not data_url:
+            return False, "Empty image"
+
+        if "," in data_url:
+            _, encoded = data_url.split(",", 1)
+        else:
+            encoded = data_url
+
+        image_bytes = base64.b64decode(encoded)
+        bio = io.BytesIO(image_bytes)
+        bio.name = "yolo_result.jpg"
+
+        url = f"{TG_API}/sendPhoto"
+        data = {
+            "chat_id": TELEGRAM_CHAT_ID,
+            "caption": str(caption)[:1024]
+        }
+        files = {
+            "photo": ("yolo_result.jpg", bio, "image/jpeg")
+        }
+
+        r = requests.post(url, data=data, files=files, timeout=60)
+        js = r.json()
+
+        if not js.get("ok"):
+            print("sendPhoto error:", js)
+            return False, js
+
+        return True, "OK"
+
+    except Exception as e:
+        print("sendPhoto exception:", repr(e))
+        return False, str(e)
+
+
+def send_yolo_alert_payload(payload):
+    """
+    Called by Render FastAPI endpoint /yolo-alert.
+    YOLO Space sends:
+      {
+        "message": "...",
+        "images": [{"image": "data:image/jpeg;base64,...", "caption": "..."}],
+        "final_summary": {...}
+      }
+    Render sends the message and annotated images to Telegram.
+    """
+    message = payload.get("message", "")
+    if not message:
+        message = "🦠 AI TOMATO DISEASE DETECTION ALERT\n\n" + json.dumps(
+            payload.get("final_summary", {}),
+            ensure_ascii=False,
+            indent=2
+        )
+
+    ok_msg, msg_errors = send_message(message)
+
+    photos_sent = 0
+    photo_errors = []
+
+    images = payload.get("images") or payload.get("prediction_images") or []
+    for i, item in enumerate(images, start=1):
+        if isinstance(item, dict):
+            img = item.get("image", "")
+            caption = item.get("caption", f"YOLO annotated image {i}")
+        else:
+            img = str(item)
+            caption = f"YOLO annotated image {i}"
+
+        ok, err = send_photo_data_url(img, caption)
+        if ok:
+            photos_sent += 1
+        else:
+            photo_errors.append({"image": i, "error": str(err)})
+
+    return {
+        "message_sent": ok_msg,
+        "message_errors": msg_errors,
+        "photos_sent": photos_sent,
+        "photos_total": len(images),
+        "photo_errors": photo_errors
+    }
 
 
 def get_json(path, timeout=60):
@@ -68,7 +161,6 @@ def get_json(path, timeout=60):
 
 
 def pretty_json(obj):
-    import json
     return json.dumps(obj, ensure_ascii=False, indent=2)
 
 
@@ -124,7 +216,7 @@ def poll_loop():
     me = requests.get(f"{TG_API}/getMe", timeout=20).json()
     print("getMe:", me)
 
-    send_message("✅ Telegram bridge started on laptop/Render." + COMMAND_MENU)
+    send_message("✅ Telegram bridge started on Render." + COMMAND_MENU)
 
     while True:
         try:
