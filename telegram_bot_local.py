@@ -1,5 +1,4 @@
 import os
-import time
 import base64
 import io
 import json
@@ -11,15 +10,14 @@ load_dotenv()
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
 WEATHER_APP_BASE_URL = os.getenv("WEATHER_APP_BASE_URL", "https://grudproject-weather-app.hf.space").rstrip("/")
+PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", os.getenv("RENDER_BOT_URL", "")).strip().rstrip("/")
 
 if not TELEGRAM_BOT_TOKEN:
-    raise RuntimeError("Missing TELEGRAM_BOT_TOKEN in .env or Render environment variables")
+    raise RuntimeError("Missing TELEGRAM_BOT_TOKEN in environment variables")
 if not TELEGRAM_CHAT_ID:
-    raise RuntimeError("Missing TELEGRAM_CHAT_ID in .env or Render environment variables")
+    raise RuntimeError("Missing TELEGRAM_CHAT_ID in environment variables")
 
 TG_API = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
-
-last_update_id = None
 
 COMMAND_MENU = (
     "\n\n━━━━━━━━━━━━━━\n"
@@ -36,14 +34,40 @@ def add_menu(message):
     return str(message) + COMMAND_MENU
 
 
-def tg_request(method, data=None, timeout=30):
+def tg_post(method, data=None, files=None, timeout=30):
     url = f"{TG_API}/{method}"
-    r = requests.post(url, data=data or {}, timeout=timeout)
+    r = requests.post(url, data=data or {}, files=files, timeout=timeout)
     try:
-        js = r.json()
+        return r.json()
     except Exception:
         return {"ok": False, "description": r.text}
-    return js
+
+
+def tg_get(method, params=None, timeout=30):
+    url = f"{TG_API}/{method}"
+    r = requests.get(url, params=params or {}, timeout=timeout)
+    try:
+        return r.json()
+    except Exception:
+        return {"ok": False, "description": r.text}
+
+
+def set_telegram_webhook():
+    if not PUBLIC_BASE_URL:
+        return {
+            "ok": False,
+            "description": "PUBLIC_BASE_URL is missing. Add PUBLIC_BASE_URL=https://smart-greenhouse-telegram-bot.onrender.com in Render environment variables."
+        }
+
+    webhook_url = f"{PUBLIC_BASE_URL}/telegram-webhook"
+    return tg_post("setWebhook", {
+        "url": webhook_url,
+        "drop_pending_updates": "true"
+    }, timeout=30)
+
+
+def get_webhook_info():
+    return tg_get("getWebhookInfo", timeout=30)
 
 
 def send_message(text):
@@ -53,7 +77,7 @@ def send_message(text):
     errors = []
 
     for part in chunks:
-        js = tg_request("sendMessage", {
+        js = tg_post("sendMessage", {
             "chat_id": TELEGRAM_CHAT_ID,
             "text": part
         }, timeout=30)
@@ -80,7 +104,6 @@ def send_photo_data_url(data_url, caption=""):
         bio = io.BytesIO(image_bytes)
         bio.name = "yolo_result.jpg"
 
-        url = f"{TG_API}/sendPhoto"
         data = {
             "chat_id": TELEGRAM_CHAT_ID,
             "caption": str(caption)[:1024]
@@ -89,8 +112,7 @@ def send_photo_data_url(data_url, caption=""):
             "photo": ("yolo_result.jpg", bio, "image/jpeg")
         }
 
-        r = requests.post(url, data=data, files=files, timeout=60)
-        js = r.json()
+        js = tg_post("sendPhoto", data=data, files=files, timeout=60)
 
         if not js.get("ok"):
             print("sendPhoto error:", js)
@@ -104,16 +126,6 @@ def send_photo_data_url(data_url, caption=""):
 
 
 def send_yolo_alert_payload(payload):
-    """
-    Called by Render FastAPI endpoint /yolo-alert.
-    YOLO Space sends:
-      {
-        "message": "...",
-        "images": [{"image": "data:image/jpeg;base64,...", "caption": "..."}],
-        "final_summary": {...}
-      }
-    Render sends the message and annotated images to Telegram.
-    """
     message = payload.get("message", "")
     if not message:
         message = "🦠 AI TOMATO DISEASE DETECTION ALERT\n\n" + json.dumps(
@@ -207,55 +219,24 @@ def handle_command(text):
     return add_menu("Send /help to see available commands.")
 
 
-def poll_loop():
-    global last_update_id
+def handle_telegram_update(update):
+    msg = update.get("message") or update.get("edited_message") or {}
+    chat = msg.get("chat", {})
+    chat_id = str(chat.get("id", ""))
 
-    print("Deleting webhook...")
-    print(tg_request("deleteWebhook", timeout=20))
+    if chat_id != str(TELEGRAM_CHAT_ID):
+        print("Ignoring chat_id:", chat_id)
+        return {"ignored": True, "chat_id": chat_id}
 
-    me = requests.get(f"{TG_API}/getMe", timeout=20).json()
-    print("getMe:", me)
+    text = msg.get("text", "")
+    print("Webhook command:", text)
 
-    send_message("✅ Telegram bridge started on Render." + COMMAND_MENU)
+    reply = handle_command(text)
+    ok, errors = send_message(reply)
 
-    while True:
-        try:
-            params = {"timeout": 25}
-            if last_update_id is not None:
-                params["offset"] = last_update_id + 1
-
-            r = requests.get(f"{TG_API}/getUpdates", params=params, timeout=35)
-            js = r.json()
-
-            if not js.get("ok"):
-                print("getUpdates error:", js)
-                time.sleep(5)
-                continue
-
-            for update in js.get("result", []):
-                last_update_id = update.get("update_id", last_update_id)
-
-                msg = update.get("message") or update.get("edited_message") or {}
-                chat = msg.get("chat", {})
-                chat_id = str(chat.get("id", ""))
-
-                if chat_id != str(TELEGRAM_CHAT_ID):
-                    print("Ignoring chat_id:", chat_id)
-                    continue
-
-                text = msg.get("text", "")
-                print("Command:", text)
-
-                reply = handle_command(text)
-                send_message(reply)
-
-        except KeyboardInterrupt:
-            print("Stopped by user.")
-            break
-        except Exception as e:
-            print("poll_loop error:", repr(e))
-            time.sleep(5)
-
-
-if __name__ == "__main__":
-    poll_loop()
+    return {
+        "ignored": False,
+        "command": text,
+        "reply_sent": ok,
+        "errors": errors
+    }
