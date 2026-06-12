@@ -15,7 +15,7 @@ def root():
     return {
         "status": "running",
         "service": "Smart Greenhouse Telegram Webhook Bot",
-        "commands": ["/start", "/readings", "/report", "/weather", "/disease", "/daily"],
+        "commands": ["/start", "/readings", "/report", "/weather", "/disease", "/history", "/daily"],
         "telegram_webhook": "/telegram-webhook",
         "yolo_endpoint": "/yolo-alert"
     }
