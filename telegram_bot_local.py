@@ -10,13 +10,27 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
 WEATHER_APP_BASE_URL = os.getenv("WEATHER_APP_BASE_URL", "https://grudproject-weather-app.hf.space").rstrip("/")
 
 if not TELEGRAM_BOT_TOKEN:
-    raise RuntimeError("Missing TELEGRAM_BOT_TOKEN in .env")
+    raise RuntimeError("Missing TELEGRAM_BOT_TOKEN in .env or Render environment variables")
 if not TELEGRAM_CHAT_ID:
-    raise RuntimeError("Missing TELEGRAM_CHAT_ID in .env")
+    raise RuntimeError("Missing TELEGRAM_CHAT_ID in .env or Render environment variables")
 
 TG_API = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 
 last_update_id = None
+
+COMMAND_MENU = (
+    "\n\n━━━━━━━━━━━━━━\n"
+    "📌 Commands:\n"
+    "/readings - current sensor + disease report\n"
+    "/report - full report with sensors + disease + weather\n"
+    "/weather - weather information\n"
+    "/disease - latest disease status\n"
+    "/daily - send daily report now"
+)
+
+
+def add_menu(message):
+    return str(message) + COMMAND_MENU
 
 
 def tg_request(method, data=None, timeout=30):
@@ -77,28 +91,28 @@ def handle_command(text):
             "/report - full report with sensors + disease + weather\n"
             "/weather - weather information\n"
             "/disease - latest disease status\n"
-            "/daily - send daily report now\n"
+            "/daily - send daily report now"
         )
 
     if text == "/readings":
-        return get_report_message("/send-readings")
+        return add_menu(get_report_message("/send-readings"))
 
     if text in ["/report", "/daily"]:
-        return get_report_message("/send-report")
+        return add_menu(get_report_message("/send-report"))
 
     if text == "/weather":
         js = get_json("/weather")
-        return "🌤 WEATHER INFO\n\n" + pretty_json(js)
+        return add_menu("🌤 WEATHER INFO\n\n" + pretty_json(js))
 
     if text == "/disease":
         js = get_json("/disease")
-        return "🦠 LATEST DISEASE STATUS\n\n" + pretty_json(js)
+        return add_menu("🦠 LATEST DISEASE STATUS\n\n" + pretty_json(js))
 
     if text == "/sensors":
         js = get_json("/sensors")
-        return "🌿 SENSORS DATA\n\n" + pretty_json(js)
+        return add_menu("🌿 SENSORS DATA\n\n" + pretty_json(js))
 
-    return "Send /help to see available commands."
+    return add_menu("Send /help to see available commands.")
 
 
 def poll_loop():
@@ -110,7 +124,7 @@ def poll_loop():
     me = requests.get(f"{TG_API}/getMe", timeout=20).json()
     print("getMe:", me)
 
-    send_message("✅ Telegram bridge started on laptop/Render.")
+    send_message("✅ Telegram bridge started on laptop/Render." + COMMAND_MENU)
 
     while True:
         try:
