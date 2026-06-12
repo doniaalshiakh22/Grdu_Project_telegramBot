@@ -19,7 +19,8 @@ def root():
     return {
         "status": "running",
         "service": "Smart Greenhouse Telegram Bridge",
-        "commands": ["/start", "/readings", "/report", "/weather", "/disease", "/daily"]
+        "commands": ["/start", "/readings", "/report", "/weather", "/disease", "/daily"],
+        "menu_after_every_response": True
     }
 
 @app.get("/health")
