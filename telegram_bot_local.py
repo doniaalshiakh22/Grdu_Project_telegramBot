@@ -19,19 +19,18 @@ if not TELEGRAM_CHAT_ID:
 
 TG_API = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 
-COMMAND_MENU = (
-    "\n\n━━━━━━━━━━━━━━\n"
-    "📌 Commands:\n"
+COMMAND_MENU_TEXT = (
+    "🌿 Smart Greenhouse Bot is running.\n\n"
+    "Commands:\n"
     "/readings - current sensor + disease report\n"
     "/report - full report with sensors + disease + weather\n"
     "/weather - weather information\n"
     "/disease - latest disease status\n"
+    "/history - all nodes sensor + disease history\n"
     "/daily - send daily report now"
 )
 
-
-def add_menu(message):
-    return str(message) + COMMAND_MENU
+COMMAND_MENU_BLOCK = "\n\n━━━━━━━━━━━━━━\n📌 Commands:\n" + "\n".join(COMMAND_MENU_TEXT.splitlines()[3:])
 
 
 def tg_post(method, data=None, files=None, timeout=30):
@@ -163,7 +162,7 @@ def send_yolo_alert_payload(payload):
     }
 
 
-def get_json(path, timeout=60):
+def get_json(path, timeout=90):
     url = f"{WEATHER_APP_BASE_URL}{path}"
     r = requests.get(url, timeout=timeout)
     try:
@@ -177,7 +176,7 @@ def pretty_json(obj):
 
 
 def get_report_message(endpoint):
-    js = get_json(endpoint, timeout=90)
+    js = get_json(endpoint, timeout=120)
     msg = js.get("message")
     if msg:
         return msg
@@ -188,35 +187,33 @@ def handle_command(text):
     text = (text or "").strip()
 
     if text in ["/start", "/help"]:
-        return (
-            "🌿 Smart Greenhouse Bot is running.\n\n"
-            "Commands:\n"
-            "/readings - current sensor + disease report\n"
-            "/report - full report with sensors + disease + weather\n"
-            "/weather - weather information\n"
-            "/disease - latest disease status\n"
-            "/daily - send daily report now"
-        )
+        return COMMAND_MENU_TEXT
 
     if text == "/readings":
-        return add_menu(get_report_message("/send-readings"))
+        return get_report_message("/send-readings")
 
     if text in ["/report", "/daily"]:
-        return add_menu(get_report_message("/send-report"))
+        return get_report_message("/send-report")
+
+    if text == "/history":
+        return get_report_message("/send-history")
 
     if text == "/weather":
         js = get_json("/weather")
-        return add_menu("🌤 WEATHER INFO\n\n" + pretty_json(js))
+        return "🌤 WEATHER INFO\n\n" + pretty_json(js)
 
     if text == "/disease":
+        # Use message if Weather_app /disease returns one later; otherwise JSON.
         js = get_json("/disease")
-        return add_menu("🦠 LATEST DISEASE STATUS\n\n" + pretty_json(js))
+        if isinstance(js, dict) and js.get("message"):
+            return js["message"]
+        return "🦠 LATEST DISEASE STATUS\n\n" + pretty_json(js)
 
     if text == "/sensors":
         js = get_json("/sensors")
-        return add_menu("🌿 SENSORS DATA\n\n" + pretty_json(js))
+        return "🌿 SENSORS DATA\n\n" + pretty_json(js)
 
-    return add_menu("Send /help to see available commands.")
+    return "Unknown command. Send /help to see available commands."
 
 
 def handle_telegram_update(update):
@@ -234,9 +231,18 @@ def handle_telegram_update(update):
     reply = handle_command(text)
     ok, errors = send_message(reply)
 
+    # Send commands menu as a separate message after every command response,
+    # except /start and /help because they already return the menu.
+    menu_ok = True
+    menu_errors = []
+    if text not in ["/start", "/help"]:
+        menu_ok, menu_errors = send_message(COMMAND_MENU_TEXT)
+
     return {
         "ignored": False,
         "command": text,
         "reply_sent": ok,
-        "errors": errors
+        "errors": errors,
+        "menu_sent": menu_ok,
+        "menu_errors": menu_errors,
     }
