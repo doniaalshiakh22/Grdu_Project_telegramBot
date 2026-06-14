@@ -9,6 +9,8 @@ from fastapi.responses import JSONResponse
 import telegram_bot_local
 
 app = FastAPI(title="Smart Greenhouse Telegram Webhook Bot")
+application = app
+server = app
 
 ENABLE_WEATHER_PING_LOOP = os.getenv("ENABLE_WEATHER_PING_LOOP", "true").strip().lower() in ["1", "true", "yes", "on"]
 WEATHER_PING_INTERVAL_SECONDS = int(os.getenv("WEATHER_PING_INTERVAL_SECONDS", "60"))
@@ -76,7 +78,9 @@ def root():
     return {
         "status": "running",
         "service": "Smart Greenhouse Telegram Webhook Bot",
-        "commands": ["/start", "/readings", "/report", "/weather", "/disease", "/camera", "/update_weather"],
+        "commands": ["/start", "/ابدأ", "/readings", "/report", "/weather", "/disease", "/camera", "/update_weather"],
+        "language_settings": "English and Arabic saved per Telegram chat",
+        "clear_chat_button": "Deletes remembered bot messages when possible",
         "telegram_webhook": "/telegram-webhook",
         "yolo_endpoint": "/yolo-alert",
         "weather_check_sensors_proxy": "/ping-weather-sensors",
