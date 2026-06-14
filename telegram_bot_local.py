@@ -174,7 +174,10 @@ def handle_command(text):
         return get_report_message("/send-report")
 
     if text == "/weather":
-        return "🌤 WEATHER INFO\n\n" + pretty_json(get_json("/weather"))
+        js = get_json("/weather")
+        if isinstance(js, dict) and js.get("message"):
+            return js["message"]
+        return "🌤 WEATHER INFO\n\n" + pretty_json(js)
 
     if text == "/disease":
         js = get_json("/disease")
@@ -185,6 +188,8 @@ def handle_command(text):
 
     if text == "/update_weather":
         update_result = get_json("/update-weather", timeout=180)
+        if isinstance(update_result, dict) and update_result.get("message"):
+            return update_result["message"] + "\n\n🔗 Weather App:\n" + WEATHER_APP_URL
         return "🌤 Weather App:\n" + WEATHER_APP_URL + "\n\nUpdate result:\n" + pretty_json(update_result)
 
     if text == "/daily":
