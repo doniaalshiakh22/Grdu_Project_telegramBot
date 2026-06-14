@@ -48,13 +48,12 @@ COMMAND_INLINE_KEYBOARD = {
 }
 
 
-# Removes the old bottom Reply Keyboard from Telegram mobile/desktop.
-# This is needed because old versions used persistent Reply Keyboard.
-REMOVE_KEYBOARD = {"remove_keyboard": True}
-
-
-def remove_bottom_keyboard():
-    return send_message("⌨️ Keyboard updated.", reply_markup=REMOVE_KEYBOARD)
+# This removes the old bottom Reply Keyboard from Telegram phone.
+# It is needed because old bot versions used a persistent keyboard.
+REMOVE_KEYBOARD = {
+    "remove_keyboard": True,
+    "selective": False
+}
 
 
 def answer_callback_query(callback_query_id, text=""):
@@ -116,6 +115,11 @@ def send_message(text, reply_markup=None):
             print("sendMessage error:", js)
 
     return ok_all, errors
+
+
+def send_remove_keyboard():
+    # This clears the old custom keyboard shown under the typing box on phone.
+    return send_message("✅ Phone keyboard cleared.", reply_markup=REMOVE_KEYBOARD)
 
 
 def send_menu():
@@ -213,8 +217,8 @@ def handle_command(text):
     if text in ["/start", "/help"]:
         return COMMAND_MENU_TEXT
 
-    if text == "/remove_keyboard":
-        return "Old bottom keyboard removed. Use /start to show the inline buttons."
+    if text in ["/remove_keyboard", "/clear_keyboard"]:
+        return "✅ Old phone keyboard removed. Use the green inline buttons under the bot message."
 
     if text == "/readings":
         return get_report_message("/send-readings")
@@ -266,12 +270,9 @@ def handle_telegram_update(update):
         answer_callback_query(callback_id)
 
         reply = handle_command(command)
+        ok, errors = send_message(reply)
 
-        if command == "/remove_keyboard":
-            ok, errors = send_message(reply, reply_markup=REMOVE_KEYBOARD)
-        else:
-            ok, errors = send_message(reply)
-
+        # Send inline buttons again after the command result.
         menu_ok, menu_errors = send_menu()
 
         return {
@@ -295,22 +296,25 @@ def handle_telegram_update(update):
     text = msg.get("text", "")
     reply = handle_command(text)
 
-    # Remove the old bottom Reply Keyboard when user starts the bot.
+    # /start and /help:
+    # First remove the old bottom phone keyboard, then show only inline buttons.
     if text in ["/start", "/help"]:
-        # This removes the circled bottom buttons from old versions.
-        send_message("✅ Menu updated.", reply_markup=REMOVE_KEYBOARD)
+        clear_ok, clear_errors = send_remove_keyboard()
         ok, errors = send_message(reply, reply_markup=COMMAND_INLINE_KEYBOARD)
         return {
             "ignored": False,
             "type": "message",
             "command": text,
+            "clear_keyboard_sent": clear_ok,
+            "clear_keyboard_errors": clear_errors,
             "reply_sent": ok,
             "errors": errors,
             "menu_sent": True,
             "menu_errors": [],
         }
 
-    if text == "/remove_keyboard":
+    # Manual command to remove the old phone keyboard.
+    if text in ["/remove_keyboard", "/clear_keyboard"]:
         ok, errors = send_message(reply, reply_markup=REMOVE_KEYBOARD)
         menu_ok, menu_errors = send_menu()
         return {
