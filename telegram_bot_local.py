@@ -26,11 +26,8 @@ COMMAND_MENU_TEXT = (
     "/report - full report with sensors + disease + weather\n"
     "/weather - weather information\n"
     "/disease - latest disease status\n"
-    "/history - all nodes sensor + disease history\n"
     "/daily - send daily report now"
 )
-
-COMMAND_MENU_BLOCK = "\n\n━━━━━━━━━━━━━━\n📌 Commands:\n" + "\n".join(COMMAND_MENU_TEXT.splitlines()[3:])
 
 
 def tg_post(method, data=None, files=None, timeout=30):
@@ -168,7 +165,7 @@ def get_json(path, timeout=90):
     try:
         return r.json()
     except Exception:
-        return {"error": r.text}
+        return {"error": r.text, "status_code": r.status_code}
 
 
 def pretty_json(obj):
@@ -183,6 +180,14 @@ def get_report_message(endpoint):
     return pretty_json(js)
 
 
+def ping_weather_check_sensors():
+    """
+    Pings Weather App /check-sensors.
+    Weather App will send Telegram automatically only if Arduino Cloud sensor data changed.
+    """
+    return get_json("/check-sensors", timeout=120)
+
+
 def handle_command(text):
     text = (text or "").strip()
 
@@ -195,15 +200,11 @@ def handle_command(text):
     if text in ["/report", "/daily"]:
         return get_report_message("/send-report")
 
-    if text == "/history":
-        return get_report_message("/send-history")
-
     if text == "/weather":
         js = get_json("/weather")
         return "🌤 WEATHER INFO\n\n" + pretty_json(js)
 
     if text == "/disease":
-        # Use message if Weather_app /disease returns one later; otherwise JSON.
         js = get_json("/disease")
         if isinstance(js, dict) and js.get("message"):
             return js["message"]
@@ -212,6 +213,9 @@ def handle_command(text):
     if text == "/sensors":
         js = get_json("/sensors")
         return "🌿 SENSORS DATA\n\n" + pretty_json(js)
+
+    if text == "/history":
+        return "History is disabled in this version. Use /readings, /report, /weather, /disease, or /daily."
 
     return "Unknown command. Send /help to see available commands."
 
@@ -231,7 +235,7 @@ def handle_telegram_update(update):
     reply = handle_command(text)
     ok, errors = send_message(reply)
 
-    # Send commands menu as a separate message after every command response,
+    # Send command menu as a separate message after every command response,
     # except /start and /help because they already return the menu.
     menu_ok = True
     menu_errors = []
