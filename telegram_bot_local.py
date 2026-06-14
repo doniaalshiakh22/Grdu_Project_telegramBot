@@ -33,6 +33,26 @@ COMMAND_MENU_TEXT = (
     "/update_weather - open Weather App"
 )
 
+# Telegram button keyboard.
+# These are Reply Keyboard buttons: when the farmer presses a button,
+# Telegram sends the command text automatically, the same as typing it.
+COMMAND_KEYBOARD = {
+    "keyboard": [
+        [{"text": "/readings"}, {"text": "/report"}],
+        [{"text": "/weather"}, {"text": "/disease"}],
+        [{"text": "/camera"}, {"text": "/update_weather"}],
+    ],
+    "resize_keyboard": True,
+    "one_time_keyboard": False,
+    "is_persistent": True,
+    "input_field_placeholder": "Choose a Smart Greenhouse command",
+}
+
+
+def keyboard_json():
+    return json.dumps(COMMAND_KEYBOARD, ensure_ascii=False)
+
+
 
 def tg_post(method, data=None, files=None, timeout=30):
     url = f"{TG_API}/{method}"
@@ -62,18 +82,33 @@ def get_webhook_info():
     return tg_get("getWebhookInfo", timeout=30)
 
 
-def send_message(text):
+def send_message(text, reply_markup=None):
     text = str(text)
     chunks = [text[i:i+3800] for i in range(0, len(text), 3800)] or [""]
     ok_all = True
     errors = []
-    for part in chunks:
-        js = tg_post("sendMessage", {"chat_id": TELEGRAM_CHAT_ID, "text": part}, timeout=30)
+
+    for idx, part in enumerate(chunks):
+        data = {
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": part
+        }
+
+        # Attach buttons to the last chunk only, so long reports do not repeat the keyboard payload.
+        if reply_markup is not None and idx == len(chunks) - 1:
+            data["reply_markup"] = json.dumps(reply_markup, ensure_ascii=False)
+
+        js = tg_post("sendMessage", data, timeout=30)
         if not js.get("ok"):
             ok_all = False
             errors.append(js)
             print("sendMessage error:", js)
+
     return ok_all, errors
+
+
+def send_menu():
+    return send_message(COMMAND_MENU_TEXT, reply_markup=COMMAND_KEYBOARD)
 
 
 def send_photo_data_url(data_url, caption=""):
@@ -145,7 +180,7 @@ def ping_weather_check_sensors():
 
     if isinstance(js, dict) and js.get("changed") and js.get("shouldSend") and js.get("message"):
         render_sent, render_errors = send_message(js["message"])
-        menu_sent, menu_errors = send_message(COMMAND_MENU_TEXT)
+        menu_sent, menu_errors = send_menu()
         js["render_sent_message"] = render_sent
         js["render_send_errors"] = render_errors
         js["render_sent_menu"] = menu_sent
@@ -157,7 +192,7 @@ def ping_weather_check_sensors():
 def send_daily_report():
     msg = get_report_message("/send-report")
     ok, errors = send_message(msg)
-    menu_ok, menu_errors = send_message(COMMAND_MENU_TEXT)
+    menu_ok, menu_errors = send_menu()
     return {"sent": ok, "errors": errors, "menu_sent": menu_ok, "menu_errors": menu_errors}
 
 
@@ -210,11 +245,16 @@ def handle_telegram_update(update):
 
     text = msg.get("text", "")
     reply = handle_command(text)
-    ok, errors = send_message(reply)
+
+    # /start and /help show the command list with buttons immediately.
+    if text in ["/start", "/help"]:
+        ok, errors = send_message(reply, reply_markup=COMMAND_KEYBOARD)
+    else:
+        ok, errors = send_message(reply)
 
     menu_ok = True
     menu_errors = []
     if text not in ["/start", "/help"]:
-        menu_ok, menu_errors = send_message(COMMAND_MENU_TEXT)
+        menu_ok, menu_errors = send_menu()
 
     return {"ignored": False, "command": text, "reply_sent": ok, "errors": errors, "menu_sent": menu_ok, "menu_errors": menu_errors}
