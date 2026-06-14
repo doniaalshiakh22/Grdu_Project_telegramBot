@@ -24,13 +24,7 @@ TG_API = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 
 COMMAND_MENU_TEXT = (
     "🌿 Smart Greenhouse Bot is running.\n\n"
-    "Commands:\n"
-    "/readings - current sensor report\n"
-    "/report - full report with sensors + disease + weather\n"
-    "/weather - weather information\n"
-    "/disease - latest disease status\n"
-    "/camera - open tomato disease camera\n"
-    "/update_weather - open Weather App"
+    "Choose one of the buttons below:"
 )
 
 # Telegram inline buttons.
