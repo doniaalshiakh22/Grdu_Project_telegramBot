@@ -145,7 +145,6 @@ def ping_weather_check_sensors():
 
     if isinstance(js, dict) and js.get("changed") and js.get("shouldSend") and js.get("message"):
         render_sent, render_errors = send_message(js["message"])
-        # Send command menu after every automatic latest-node alert.
         menu_sent, menu_errors = send_message(COMMAND_MENU_TEXT)
         js["render_sent_message"] = render_sent
         js["render_send_errors"] = render_errors
@@ -185,7 +184,6 @@ def handle_command(text):
         return "📷 Tomato disease camera:\n" + YOLO_CAMERA_URL
 
     if text == "/update_weather":
-        # Also trigger weather update, then send the Space link.
         update_result = get_json("/update-weather", timeout=180)
         return "🌤 Weather App:\n" + WEATHER_APP_URL + "\n\nUpdate result:\n" + pretty_json(update_result)
 
