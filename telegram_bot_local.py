@@ -33,24 +33,32 @@ COMMAND_MENU_TEXT = (
     "/update_weather - open Weather App"
 )
 
-# Telegram button keyboard.
-# These are Reply Keyboard buttons: when the farmer presses a button,
-# Telegram sends the command text automatically, the same as typing it.
-COMMAND_KEYBOARD = {
-    "keyboard": [
-        [{"text": "/readings"}, {"text": "/report"}],
-        [{"text": "/weather"}, {"text": "/disease"}],
-        [{"text": "/camera"}, {"text": "/update_weather"}],
-    ],
-    "resize_keyboard": True,
-    "one_time_keyboard": False,
-    "is_persistent": True,
-    "input_field_placeholder": "Choose a Smart Greenhouse command",
+# Telegram inline buttons.
+# These buttons appear under the bot message like the example image.
+# callback_data buttons run commands; url buttons open links directly.
+COMMAND_INLINE_KEYBOARD = {
+    "inline_keyboard": [
+        [
+            {"text": "🌿 Readings", "callback_data": "/readings"},
+            {"text": "📋 Report", "callback_data": "/report"},
+        ],
+        [
+            {"text": "🌤 Weather", "callback_data": "/weather"},
+            {"text": "🦠 Disease", "callback_data": "/disease"},
+        ],
+        [
+            {"text": "📷 Camera", "url": YOLO_CAMERA_URL},
+            {"text": "🔄 Update Weather", "callback_data": "/update_weather"},
+        ],
+    ]
 }
 
 
-def keyboard_json():
-    return json.dumps(COMMAND_KEYBOARD, ensure_ascii=False)
+def answer_callback_query(callback_query_id, text=""):
+    data = {"callback_query_id": callback_query_id}
+    if text:
+        data["text"] = text
+    return tg_post("answerCallbackQuery", data, timeout=30)
 
 
 
@@ -108,7 +116,7 @@ def send_message(text, reply_markup=None):
 
 
 def send_menu():
-    return send_message(COMMAND_MENU_TEXT, reply_markup=COMMAND_KEYBOARD)
+    return send_message(COMMAND_MENU_TEXT, reply_markup=COMMAND_INLINE_KEYBOARD)
 
 
 def send_photo_data_url(data_url, caption=""):
@@ -237,24 +245,72 @@ def handle_command(text):
 
 
 def handle_telegram_update(update):
+    # Inline button press
+    callback = update.get("callback_query")
+    if callback:
+        callback_id = callback.get("id", "")
+        msg = callback.get("message") or {}
+        chat = msg.get("chat", {})
+        chat_id = str(chat.get("id", ""))
+
+        if chat_id != str(TELEGRAM_CHAT_ID):
+            return {"ignored": True, "chat_id": chat_id, "type": "callback_query"}
+
+        command = callback.get("data", "")
+        answer_callback_query(callback_id)
+
+        reply = handle_command(command)
+        ok, errors = send_message(reply)
+
+        # Send buttons again after the command result.
+        menu_ok, menu_errors = send_menu()
+
+        return {
+            "ignored": False,
+            "type": "callback_query",
+            "command": command,
+            "reply_sent": ok,
+            "errors": errors,
+            "menu_sent": menu_ok,
+            "menu_errors": menu_errors,
+        }
+
+    # Normal typed message
     msg = update.get("message") or update.get("edited_message") or {}
     chat = msg.get("chat", {})
     chat_id = str(chat.get("id", ""))
+
     if chat_id != str(TELEGRAM_CHAT_ID):
-        return {"ignored": True, "chat_id": chat_id}
+        return {"ignored": True, "chat_id": chat_id, "type": "message"}
 
     text = msg.get("text", "")
     reply = handle_command(text)
 
-    # /start and /help show the command list with buttons immediately.
+    # /start and /help show the command list with inline buttons immediately.
     if text in ["/start", "/help"]:
-        ok, errors = send_message(reply, reply_markup=COMMAND_KEYBOARD)
-    else:
-        ok, errors = send_message(reply)
+        ok, errors = send_message(reply, reply_markup=COMMAND_INLINE_KEYBOARD)
+        return {
+            "ignored": False,
+            "type": "message",
+            "command": text,
+            "reply_sent": ok,
+            "errors": errors,
+            "menu_sent": True,
+            "menu_errors": [],
+        }
 
-    menu_ok = True
-    menu_errors = []
-    if text not in ["/start", "/help"]:
-        menu_ok, menu_errors = send_menu()
+    ok, errors = send_message(reply)
 
-    return {"ignored": False, "command": text, "reply_sent": ok, "errors": errors, "menu_sent": menu_ok, "menu_errors": menu_errors}
+    # Send buttons after every normal command.
+    menu_ok, menu_errors = send_menu()
+
+    return {
+        "ignored": False,
+        "type": "message",
+        "command": text,
+        "reply_sent": ok,
+        "errors": errors,
+        "menu_sent": menu_ok,
+        "menu_errors": menu_errors,
+    }
+
