@@ -81,6 +81,7 @@ def root():
         "yolo_endpoint": "/yolo-alert",
         "weather_check_sensors_proxy": "/ping-weather-sensors",
         "daily_report_endpoint": "/send-daily-report",
+        "daily_report_aliases": ["/send-daily-report", "/daily-report", "/send_daily_report"],
         "history_enabled": False,
     }
 
@@ -116,9 +117,23 @@ def ping_weather_sensors():
     return telegram_bot_local.ping_weather_check_sensors()
 
 
+def _send_daily_report_response():
+    return telegram_bot_local.send_daily_report()
+
+
 @app.get("/send-daily-report")
 def send_daily_report():
-    return telegram_bot_local.send_daily_report()
+    return _send_daily_report_response()
+
+
+@app.get("/daily-report")
+def daily_report_alias():
+    return _send_daily_report_response()
+
+
+@app.get("/send_daily_report")
+def send_daily_report_alias():
+    return _send_daily_report_response()
 
 
 @app.post("/telegram-webhook")
