@@ -8,7 +8,7 @@ import telegram_bot_local
 
 app = FastAPI(title="Smart Greenhouse Telegram Webhook Bot")
 
-ENABLE_WEATHER_PING_LOOP = os.getenv("ENABLE_WEATHER_PING_LOOP", "false").strip().lower() in ["1", "true", "yes", "on"]
+ENABLE_WEATHER_PING_LOOP = os.getenv("ENABLE_WEATHER_PING_LOOP", "true").strip().lower() in ["1", "true", "yes", "on"]
 WEATHER_PING_INTERVAL_SECONDS = int(os.getenv("WEATHER_PING_INTERVAL_SECONDS", "60"))
 _ping_loop_started = False
 
@@ -31,9 +31,6 @@ def startup():
     print("setWebhook:", result)
     print("getWebhookInfo:", telegram_bot_local.get_webhook_info())
 
-    # Optional background ping while Render is awake.
-    # For reliable alerts on free tiers, use an external uptime monitor or Render cron
-    # to ping Weather App /check-sensors every 1 minute.
     if ENABLE_WEATHER_PING_LOOP and not _ping_loop_started:
         _ping_loop_started = True
         t = threading.Thread(target=weather_ping_loop, daemon=True)
@@ -80,12 +77,6 @@ def webhook_info():
 
 @app.get("/ping-weather-sensors")
 def ping_weather_sensors():
-    """
-    Optional proxy endpoint.
-    You can ping this Render endpoint, and it will call Weather App /check-sensors.
-    Direct ping is also okay:
-    https://grudproject-weather-app.hf.space/check-sensors
-    """
     return telegram_bot_local.ping_weather_check_sensors()
 
 
