@@ -22,7 +22,7 @@ TG_API = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 COMMAND_MENU_TEXT = (
     "🌿 Smart Greenhouse Bot is running.\n\n"
     "Commands:\n"
-    "/readings - current sensor + disease report\n"
+    "/readings - current sensor report\n"
     "/report - full report with sensors + disease + weather\n"
     "/weather - weather information\n"
     "/disease - latest disease status\n"
@@ -100,20 +100,13 @@ def send_photo_data_url(data_url, caption=""):
         bio = io.BytesIO(image_bytes)
         bio.name = "yolo_result.jpg"
 
-        data = {
-            "chat_id": TELEGRAM_CHAT_ID,
-            "caption": str(caption)[:1024]
-        }
-        files = {
-            "photo": ("yolo_result.jpg", bio, "image/jpeg")
-        }
+        data = {"chat_id": TELEGRAM_CHAT_ID, "caption": str(caption)[:1024]}
+        files = {"photo": ("yolo_result.jpg", bio, "image/jpeg")}
 
         js = tg_post("sendPhoto", data=data, files=files, timeout=60)
-
         if not js.get("ok"):
             print("sendPhoto error:", js)
             return False, js
-
         return True, "OK"
 
     except Exception as e:
@@ -182,10 +175,20 @@ def get_report_message(endpoint):
 
 def ping_weather_check_sensors():
     """
-    Pings Weather App /check-sensors.
-    Weather App will send Telegram automatically only if Arduino Cloud sensor data changed.
+    Calls Weather App /check-sensors.
+    If Weather App could not send Telegram directly but returns shouldSend=True,
+    Render sends the returned message to Telegram.
     """
-    return get_json("/check-sensors", timeout=120)
+    js = get_json("/check-sensors", timeout=120)
+
+    render_sent = False
+    render_errors = []
+    if isinstance(js, dict) and js.get("changed") and js.get("shouldSend") and js.get("message"):
+        render_sent, render_errors = send_message(js["message"])
+        js["render_sent_message"] = render_sent
+        js["render_send_errors"] = render_errors
+
+    return js
 
 
 def handle_command(text):
@@ -210,10 +213,6 @@ def handle_command(text):
             return js["message"]
         return "🦠 LATEST DISEASE STATUS\n\n" + pretty_json(js)
 
-    if text == "/sensors":
-        js = get_json("/sensors")
-        return "🌿 SENSORS DATA\n\n" + pretty_json(js)
-
     if text == "/history":
         return "History is disabled in this version. Use /readings, /report, /weather, /disease, or /daily."
 
@@ -235,8 +234,6 @@ def handle_telegram_update(update):
     reply = handle_command(text)
     ok, errors = send_message(reply)
 
-    # Send command menu as a separate message after every command response,
-    # except /start and /help because they already return the menu.
     menu_ok = True
     menu_errors = []
     if text not in ["/start", "/help"]:
