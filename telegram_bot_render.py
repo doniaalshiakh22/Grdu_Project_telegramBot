@@ -90,6 +90,11 @@ def root():
     }
 
 
+@app.head("/")
+def head_root():
+    return {}
+
+
 @app.get("/health")
 def health():
     return {
