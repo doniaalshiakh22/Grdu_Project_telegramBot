@@ -294,6 +294,75 @@ AR_REPLACEMENTS = {
 }
 
 
+# Extra Arabic replacements to avoid mixed English/Arabic farmer messages.
+AR_EXTRA_REPLACEMENTS = {
+    "TOMATO DISEASE REPORT": "تقرير أمراض البندورة",
+    "Disease Report": "تقرير الأمراض",
+    "Date": "التاريخ",
+    "node update": "وقت تحديث العقدة",
+    "Node update": "وقت تحديث العقدة",
+    "Disease update": "وقت تحديث المرض",
+    "matched disease result": "نتيجة المرض المطابق",
+    "Matched disease result": "نتيجة المرض المطابق",
+    "Detected": "تم الكشف عن",
+    "Most likely": "الأكثر احتمالًا",
+    "images": "صور",
+    "image": "صورة",
+    "img": "صورة",
+    "total": "المجموع",
+    "infected": "مصابة",
+    "healthy": "سليمة",
+    "no detection": "لا يوجد كشف",
+    "Weather Alert": "تنبيه الطقس",
+    "Weather actions": "إجراءات الطقس",
+    "Weather Risk Forecast": "توقعات مخاطر الطقس",
+    "SUMMARY": "ملخص",
+    "Temp": "الحرارة",
+    "Humidity": "الرطوبة",
+    "Wind": "الرياح",
+    "Risk": "الخطر",
+    "Action": "الإجراء",
+    "Stable": "مستقر",
+    "No major outside weather risk for tomato plants is expected.": "لا يُتوقع وجود خطر طقس خارجي كبير على نباتات البندورة.",
+    "Continue normal monitoring and ventilation.": "استمر بالمراقبة والتهوية الطبيعية.",
+    "high humidity may increase disease risk if leaves stay wet.": "الرطوبة المرتفعة قد تزيد خطر الأمراض إذا بقيت الأوراق مبللة.",
+    "Ventilate during suitable hours.": "قم بالتهوية خلال الساعات المناسبة.",
+    "Follow the forecast advice and continue monitoring tomato plants.": "اتبع توصيات الطقس واستمر بمراقبة نباتات البندورة.",
+    "Air": "حرارة الهواء",
+    "Humidity": "الرطوبة",
+    "Soil moisture": "رطوبة التربة",
+    "Soil temp": "حرارة التربة",
+    "High Risk": "خطر مرتفع",
+    "Risk": "خطر",
+    "and irrigation": "والري",
+    "first": "أولًا",
+    "or": "أو",
+    "result": "نتيجة",
+    "Matched sensor interpretation": "تفسير المستشعرات المرتبطة بالمرض",
+    "pH/EC problems stress plants but do not directly cause fungal/viral disease.": "مشكلات pH و EC تُجهد النبات، لكنها لا تسبب الأمراض الفطرية أو الفيروسية بشكل مباشر.",
+    "Remove infected lower leaves.": "أزل الأوراق السفلية المصابة.",
+    "Remove infected lower leaves and old plant debris.": "أزل الأوراق السفلية المصابة وبقايا النبات القديمة.",
+    "Remove old plant debris.": "أزل بقايا النباتات القديمة.",
+    "Keep leaves dry.": "حافظ على جفاف الأوراق.",
+    "Improve airflow.": "حسّن حركة الهواء.",
+    "Improve airflow around this node.": "حسّن حركة الهواء حول هذه العقدة.",
+    "Use mulch to reduce splash.": "استخدم الغطاء العضوي لتقليل تطاير التربة.",
+    "Use mulch to reduce soil splash.": "استخدم الغطاء العضوي لتقليل تطاير التربة.",
+    "Avoid overhead irrigation.": "تجنّب الري من الأعلى.",
+    "Avoid overhead watering.": "تجنّب الري من الأعلى.",
+    "Scattered clouds": "غيوم متفرقة",
+    "scattered clouds": "غيوم متفرقة",
+    "few clouds": "غيوم قليلة",
+    "clear sky": "سماء صافية",
+    "broken clouds": "غيوم متقطعة",
+    "overcast clouds": "غيوم كثيفة",
+    "light rain": "أمطار خفيفة",
+    "moderate rain": "أمطار متوسطة",
+    "Leaf Spot": "تبقع الأوراق",
+    "Septoria Leaf Spot": "تبقع سبتوريا",
+}
+
+
 def to_arabic_text(text):
     text = remove_farmer_unfriendly_lines(text)
 
@@ -301,6 +370,9 @@ def to_arabic_text(text):
     # Longer phrases first to avoid partial replacement problems.
     for en in sorted(AR_REPLACEMENTS, key=len, reverse=True):
         text = text.replace(en, AR_REPLACEMENTS[en])
+
+    for en in sorted(AR_EXTRA_REPLACEMENTS, key=len, reverse=True):
+        text = text.replace(en, AR_EXTRA_REPLACEMENTS[en])
 
     # Additional line-level cleanup for common English report lines.
     line_replacements = [
@@ -324,6 +396,12 @@ def to_arabic_text(text):
     for pat, repl in line_replacements:
         text = re.sub(pat, repl, text, flags=re.IGNORECASE)
 
+    text = text.replace("— صور:", "— عدد الصور:")
+    text = text.replace("— images:", "— عدد الصور:")
+    text = text.replace("; ", "؛ ")
+    text = text.replace(" ;", "؛")
+    text = text.replace(" → ", " ← ")
+
     return text.strip()
 
 
@@ -339,8 +417,8 @@ def localized_text(text, chat_id=None, translate=True):
 # ==========================================================
 def main_menu_text(chat_id=None):
     if is_ar(chat_id):
-        return "🌿 بوت البيت البلاستيكي الذكي يعمل الآن.\n\nاختر أحد الأزرار التالية:"
-    return "🌿 Smart Greenhouse Bot is running.\n\nChoose one of the buttons below:"
+        return "🌿 البيت البلاستيكي الذكي\n\nاختر أحد الأزرار التالية:"
+    return "🌿 Smart Greenhouse\n\nChoose one of the buttons below:"
 
 
 def main_menu_keyboard(chat_id=None):
@@ -384,8 +462,8 @@ def settings_text():
     return (
         "🌐 Please choose your language:\n"
         "الرجاء اختيار لغتك:\n\n"
-        "🧹 You can also clear old bot messages.\n"
-        "يمكنك أيضًا مسح رسائل البوت القديمة."
+        "🧹 Clear old bot messages if needed.\n"
+        "امسح رسائل البوت القديمة عند الحاجة."
     )
 
 
@@ -406,8 +484,23 @@ def settings_keyboard():
 
 def start_farming_text(chat_id=None):
     if is_ar(chat_id):
-        return "✅ تم اختيار اللغة العربية.\n\nاضغط على الزر التالي للبدء:"
-    return "✅ English selected.\n\nPress the button below to begin:"
+        return (
+            "✅ تم اختيار اللغة العربية.\n\n"
+            "مرحبًا بك في نظام البيت البلاستيكي الذكي.\n\n"
+            "يساعد هذا النظام على مراقبة بيئة زراعة البندورة باستخدام مستشعرات مرتبطة بـ ESP32 و LoRa، "
+            "ثم يعرض القراءات والتنبيهات عبر Telegram. كما يستخدم نموذج ذكاء اصطناعي لفحص صور أوراق البندورة "
+            "واكتشاف الأمراض مبكرًا، مع تقديم توصيات واضحة للمزارع.\n\n"
+            "اضغط على الزر التالي للبدء:"
+        )
+
+    return (
+        "✅ English selected.\n\n"
+        "Welcome to the Smart Greenhouse Monitoring System.\n\n"
+        "This system monitors tomato greenhouse conditions using ESP32 and LoRa sensor readings, "
+        "then sends readings and alerts through Telegram. It also uses an AI model to analyze tomato leaf images "
+        "for early disease detection and gives clear farmer recommendations.\n\n"
+        "Press the button below to begin:"
+    )
 
 
 def start_farming_keyboard(chat_id=None):
@@ -503,10 +596,27 @@ def send_photo_data_url(data_url, caption="", chat_id=None):
 
 
 def send_remove_keyboard(chat_id=None):
+    # Remove old phone Reply Keyboard without showing a visible confirmation message.
+    # Telegram requires remove_keyboard to be attached to a message, so we send a tiny
+    # temporary message and delete it immediately when possible.
     chat_id = str(chat_id or TELEGRAM_CHAT_ID)
-    if is_ar(chat_id):
-        return send_message("✅ تم تنظيف لوحة الأوامر القديمة.", reply_markup=REMOVE_KEYBOARD, chat_id=chat_id, translate=False)
-    return send_message("✅ Old phone keyboard cleared.", reply_markup=REMOVE_KEYBOARD, chat_id=chat_id, translate=False)
+    js = tg_post(
+        "sendMessage",
+        {
+            "chat_id": chat_id,
+            "text": "⌨️",
+            "reply_markup": json.dumps(REMOVE_KEYBOARD, ensure_ascii=False),
+        },
+        timeout=30,
+    )
+
+    if js.get("ok"):
+        message_id = js.get("result", {}).get("message_id")
+        if message_id:
+            tg_post("deleteMessage", {"chat_id": chat_id, "message_id": message_id}, timeout=15)
+        return True, []
+
+    return False, [js]
 
 
 def send_main_menu(chat_id=None):
@@ -705,9 +815,7 @@ def handle_callback(callback, chat_id):
         return send_message(start_farming_text(chat_id), reply_markup=start_farming_keyboard(chat_id), chat_id=chat_id, translate=False)
 
     if data == "start_farming":
-        ok1, err1 = send_message(project_intro_text(chat_id), chat_id=chat_id, translate=False)
-        ok2, err2 = send_main_menu(chat_id)
-        return ok1 and ok2, err1 + err2
+        return send_main_menu(chat_id)
 
     if data == "clear_chat":
         deleted, errors = clear_remembered_messages(chat_id)
