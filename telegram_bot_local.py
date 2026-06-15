@@ -786,6 +786,112 @@ ARABIC_COMPLETE_APP_PHRASES = {
 }
 
 
+
+# V23 strict Arabic dictionary for remaining source-app text.
+ARABIC_V23_STRICT_PHRASES = {
+    # Report remaining mixed phrases
+    "Keep foliage dry and improve ventilation.": "حافظ على جفاف المجموع الخضري وحسّن التهوية.",
+    "Keep foliage dry and improve airflow.": "حافظ على جفاف المجموع الخضري وحسّن حركة الهواء.",
+    "Keep foliage dry and improve greenhouse ventilation.": "حافظ على جفاف المجموع الخضري وحسّن تهوية البيت البلاستيكي.",
+    "Keep foliage dry and": "حافظ على جفاف المجموع الخضري و",
+    "Keep foliage dry": "حافظ على جفاف المجموع الخضري",
+    "Avoid handling plants while wet.": "تجنّب التعامل مع النباتات وهي مبللة.",
+    "Avoid handling plants while wet": "تجنّب التعامل مع النباتات وهي مبللة",
+    "Avoid working with plants when leaves are wet.": "تجنّب العمل على النباتات عندما تكون الأوراق مبللة.",
+    "Avoid working with wet plants.": "تجنّب العمل على النباتات وهي مبللة.",
+    "Inspect leaf undersides for mites/webbing.": "افحص السطح السفلي للأوراق بحثًا عن الأكاروسات أو الخيوط العنكبوتية.",
+    "Inspect leaf undersides for mites or webbing.": "افحص السطح السفلي للأوراق بحثًا عن الأكاروسات أو الخيوط العنكبوتية.",
+    "Inspect the underside of leaves regularly.": "افحص السطح السفلي للأوراق بانتظام.",
+    "Remove heavily damaged leaves.": "أزل الأوراق شديدة الضرر.",
+    "Remove badly damaged leaves.": "أزل الأوراق شديدة الضرر.",
+    "Remove badly damaged leaves and use safe mite control if infestation increases.": "أزل الأوراق شديدة الضرر واستخدم مكافحة آمنة للأكاروسات إذا زادت الإصابة.",
+    "Use safe mite control if needed.": "استخدم مكافحة آمنة للأكاروسات عند الحاجة.",
+    "Use biological control or suitable miticide if infestation is severe.": "استخدم المكافحة الحيوية أو مبيد أكاروسات مناسب إذا كانت الإصابة شديدة.",
+    "Use biological control or proper miticide if needed.": "استخدم المكافحة الحيوية أو مبيد أكاروسات مناسب عند الحاجة.",
+    "Preserve beneficial insects.": "حافظ على الحشرات النافعة.",
+    "Wash mites off plants when possible.": "اغسل الأكاروسات عن النباتات عندما يكون ذلك ممكنًا.",
+    "Avoid drought stress and reduce dust.": "تجنّب إجهاد الجفاف وقلّل الغبار.",
+    "Isolate affected plants and remove heavily infested leaves.": "اعزل النباتات المصابة وأزل الأوراق شديدة الإصابة.",
+    "Keep the greenhouse clean.": "حافظ على نظافة البيت البلاستيكي.",
+    "Avoid drought stress.": "تجنّب إجهاد الجفاف.",
+
+    # Disease-specific report phrases from Weather App
+    "No critical matched sensor driver was found now; continue disease-specific control and monitoring.": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+    "No critical matched sensor driver was found now": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن",
+    "continue disease-specific control and monitoring.": "استمر بتطبيق إجراءات المرض والمراقبة.",
+    "disease-specific control and monitoring": "إجراءات المرض والمراقبة",
+    "critical matched sensor driver": "قراءة مستشعرات حرجة مرتبطة بالمرض",
+    "Critical matched sensor driver": "قراءة مستشعرات حرجة مرتبطة بالمرض",
+    "driver": "مؤشر",
+    "Scientific procedures:": "إجراءات علمية:",
+    "Matched sensor warnings that can support disease risk or plant stress:": "تحذيرات المستشعرات المطابقة التي قد تدعم خطر المرض أو إجهاد النبات:",
+    "Meaning:": "المعنى:",
+    "Farmer action:": "إجراء المزارع:",
+
+    # Late blight scientific/action text
+    "Remove infected plants or leaves quickly.": "أزل النباتات أو الأوراق المصابة بسرعة.",
+    "Remove infected leaves quickly and isolate severe plants.": "أزل الأوراق المصابة بسرعة واعزل النباتات شديدة الإصابة.",
+    "Increase ventilation and reduce humidity.": "زِد التهوية وخفّض الرطوبة.",
+    "Avoid wetting tomato leaves.": "تجنّب تبليل أوراق البندورة.",
+    "Remove volunteer tomatoes or potatoes.": "أزل نباتات البندورة أو البطاطا المتطوعة.",
+    "Apply protective treatment if late blight risk is high.": "طبّق علاجًا وقائيًا إذا كان خطر اللفحة المتأخرة مرتفعًا.",
+
+    # Leaf mites / spider mites text
+    "Tiny pest organisms that feed on tomato leaves and tissues. They are pests, not fungal or bacterial diseases.": "كائنات آفات صغيرة تتغذى على أوراق وأنسجة البندورة. هي آفات وليست أمراضًا فطرية أو بكتيرية.",
+    "Can enter through infected seedlings, nearby plants, workers, tools, wind, or plant contact. They spread faster when plants are stressed, warm, and dry.": "قد تدخل عبر الشتلات المصابة أو النباتات القريبة أو العمال أو الأدوات أو الرياح أو ملامسة النباتات. تنتشر بسرعة أكبر عندما تكون النباتات مجهدة والجو دافئًا وجافًا.",
+    "Yellowing, curling, dry or brittle leaves, distortion, bronzing or russeting on leaves, stems, or fruits.": "اصفرار وتجعد وجفاف أو هشاشة في الأوراق، وتشوهات، وظهور لون برونزي أو بني محمر على الأوراق أو السيقان أو الثمار.",
+    "High air temperature, low humidity, and low soil moisture may increase plant stress and make mite damage worse. High EC or abnormal pH may also weaken plants.": "ارتفاع حرارة الهواء وانخفاض الرطوبة وانخفاض رطوبة التربة قد يزيد إجهاد النبات ويجعل ضرر الأكاروسات أسوأ. كما أن ارتفاع EC أو اضطراب pH قد يضعف النباتات.",
+    "Small sap-sucking pests, commonly two-spotted spider mites, that damage tomato leaves by feeding on plant cells.": "آفات صغيرة ماصة للعصارة، غالبًا العنكبوت الأحمر ذو البقعتين، تضر أوراق البندورة بتغذيتها على خلايا النبات.",
+    "Increase rapidly in hot, dry, and dusty conditions, especially when plants suffer drought stress or natural predators are reduced.": "تزداد بسرعة في الظروف الحارة والجافة والمغبرة، خاصة عندما تعاني النباتات من إجهاد الجفاف أو يقل وجود الأعداء الحيوية.",
+    "Tiny yellow or white stippling spots, bronzing, drying leaves, leaf fall, and fine webbing on leaf undersides or between plant parts.": "نقاط صفراء أو بيضاء صغيرة، واصفرار أو برونزية، وجفاف الأوراق وتساقطها، ووجود خيوط دقيقة أسفل الأوراق أو بين أجزاء النبات.",
+    "High air temperature, low humidity, and low soil moisture are strong warning signs. High EC, abnormal pH, or stressful soil temperature may weaken the plant.": "ارتفاع حرارة الهواء وانخفاض الرطوبة وانخفاض رطوبة التربة مؤشرات تحذيرية قوية. كما أن ارتفاع EC أو اضطراب pH أو حرارة التربة المجهدة قد تضعف النبات.",
+
+    # Leaf mold and other source strings
+    "Improve ventilation and reduce humidity.": "حسّن التهوية وخفّض الرطوبة.",
+    "Increase plant spacing and prune dense foliage.": "زِد المسافة بين النباتات وقم بتقليم النمو الكثيف.",
+    "Clean greenhouse surfaces after the season.": "نظّف أسطح البيت البلاستيكي بعد انتهاء الموسم.",
+    "Avoid wet leaves and plant crowding.": "تجنّب ابتلال الأوراق وازدحام النباتات.",
+    "Reduce humidity and increase ventilation.": "خفّض الرطوبة وزِد التهوية.",
+    "Improve airflow and reduce leaf wetness.": "حسّن حركة الهواء وقلّل ابتلال الأوراق.",
+    "Disinfect tools and remove infected leaves.": "عقّم الأدوات وأزل الأوراق المصابة.",
+    "Control whiteflies immediately.": "كافح الذباب الأبيض فورًا.",
+    "Use insect-proof netting when possible.": "استخدم شبكًا مانعًا للحشرات عند الإمكان.",
+    "Do not move infected plant material between nodes.": "لا تنقل مواد نباتية مصابة بين العقد.",
+    "Disinfect tools and hands after handling infected plants.": "عقّم الأدوات واليدين بعد التعامل مع النباتات المصابة.",
+    "Control insects and avoid touching healthy plants after infected ones.": "كافح الحشرات وتجنّب لمس النباتات السليمة بعد النباتات المصابة.",
+
+    # Critical sensor reason phrases
+    "Cool-to-mild temperature can be favorable for Late Blight when humidity is high.": "الحرارة الباردة إلى المعتدلة قد تكون مناسبة للّفحة المتأخرة عند ارتفاع الرطوبة.",
+    "High moisture can support wet conditions and disease spread.": "ارتفاع الرطوبة قد يدعم الظروف الرطبة وانتشار المرض.",
+    "High humidity and leaf wetness can support Septoria infection.": "الرطوبة العالية وابتلال الأوراق قد يدعمان عدوى تبقع سبتوريا.",
+    "This temperature range can be favorable for Septoria development.": "هذا المجال الحراري قد يكون مناسبًا لتطور تبقع سبتوريا.",
+    "High moisture increases splash dispersal from soil or lower leaves.": "ارتفاع الرطوبة يزيد انتشار الرذاذ من التربة أو الأوراق السفلية.",
+    "High humidity and wet leaves can support Bacterial Spot spread.": "الرطوبة العالية وابتلال الأوراق قد يدعمان انتشار التبقع البكتيري.",
+    "Warm temperature can be favorable for Bacterial Spot development.": "الحرارة الدافئة قد تكون مناسبة لتطور التبقع البكتيري.",
+    "High moisture can increase splash spread and leaf wetness.": "ارتفاع الرطوبة قد يزيد انتشار الرذاذ وابتلال الأوراق.",
+    "High temperature can support mite activity and faster reproduction.": "ارتفاع الحرارة قد يدعم نشاط الأكاروسات وتكاثرها بسرعة.",
+    "Low humidity can favor mite problems and dry plant stress.": "انخفاض الرطوبة قد يساعد على مشاكل الأكاروسات وإجهاد الجفاف.",
+    "Low soil moisture stresses tomato plants and can make mite damage worse.": "انخفاض رطوبة التربة يجهد نباتات البندورة وقد يزيد ضرر الأكاروسات.",
+    "Warm temperature can support whitefly activity, which spreads this virus.": "الحرارة الدافئة قد تدعم نشاط الذباب الأبيض الذي ينقل هذا الفيروس.",
+    "Low moisture can weaken infected tomato plants.": "انخفاض الرطوبة قد يضعف نباتات البندورة المصابة.",
+    "Abnormal temperature can stress plants and make viral symptoms stronger.": "اضطراب الحرارة قد يجهد النباتات ويجعل الأعراض الفيروسية أقوى.",
+    "Abnormal moisture can stress tomato plants and confuse symptoms with nutrient problems.": "اضطراب الرطوبة قد يجهد نباتات البندورة ويجعل الأعراض تختلط مع مشاكل التغذية.",
+    "Abnormal pH can cause nutrient stress and stronger symptoms.": "اضطراب pH قد يسبب إجهادًا غذائيًا وأعراضًا أقوى.",
+}
+
+
+
+# V24 exact phrases from the latest report output.
+ARABIC_V24_LATEST_REPORT_PHRASES = {
+    "Keep foliage dry and improve ventilation.": "حافظ على جفاف المجموع الخضري وحسّن التهوية.",
+    "Avoid handling plants while wet.": "تجنّب التعامل مع النباتات وهي مبللة.",
+    "Inspect leaf undersides for mites/webbing.": "افحص السطح السفلي للأوراق بحثًا عن الأكاروسات أو الخيوط العنكبوتية.",
+    "Remove heavily damaged leaves.": "أزل الأوراق شديدة الضرر.",
+    "No critical matched sensor driver was found now; continue disease-specific control and monitoring.": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+    "No critical matched sensor driver was found now": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن",
+}
+
+
 def safe_english_replace(text, replacements):
     # Replace full English words/phrases only. This prevents:
     # Monitor -> Monitأو, Correct -> Cأوrect, INFORMATION -> INFORMATIتشغيل.
@@ -944,6 +1050,101 @@ def arabic_final_cleanup(text):
     for bad, good in v22_fixes.items():
         text = text.replace(bad, good)
 
+
+    # V23 final strict cleanup for phrases that can become partially translated.
+    v23_fixes = {
+        "Keep foliage dry and حسّن التهوية.": "حافظ على جفاف المجموع الخضري وحسّن التهوية.",
+        "Keep foliage dry and حسّن حركة الهواء.": "حافظ على جفاف المجموع الخضري وحسّن حركة الهواء.",
+        "Avoid handling plants while wet.": "تجنّب التعامل مع النباتات وهي مبللة.",
+        "Inspect leaf undersides for mites/webbing.": "افحص السطح السفلي للأوراق بحثًا عن الأكاروسات أو الخيوط العنكبوتية.",
+        "Remove heavily damaged leaves.": "أزل الأوراق شديدة الضرر.",
+        "No حرج matched sensor driver was found now؛ continue disease-specific control and monitoring.": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+        "No حرج matched sensor مؤشر was found now؛ continue disease-specific control and monitoring.": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+        "No حرج matched sensor مؤشر was found now؛ استمر بتطبيق إجراءات المرض والمراقبة.": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+        "No critical matched sensor driver was found now؛ continue disease-specific control and monitoring.": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+        "لا توجد قراءة مستشعرات حرجة مرتبطة بالمرض was found now؛ استمر بتطبيق إجراءات المرض والمراقبة.": "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+        "🟢 Check range": "🟢 تحقق من المجال",
+        "Check range": "تحقق من المجال",
+        "حسّن التهوية..": "حسّن التهوية.",
+        "حافظ على جفاف الأوراق..": "حافظ على جفاف الأوراق.",
+        "أزل الأوراق السفلية المصابة..": "أزل الأوراق السفلية المصابة.",
+        "آمن mite control": "مكافحة آمنة للأكاروسات",
+        "safe mite control": "مكافحة آمنة للأكاروسات",
+        "mite": "أكاروسات",
+        "mites": "أكاروسات",
+        "webbing": "الخيوط العنكبوتية",
+        "foliage": "المجموع الخضري",
+        "plant crowding": "ازدحام النباتات",
+    }
+    for bad, good in v23_fixes.items():
+        text = text.replace(bad, good)
+
+    # Translate any remaining common English fragments without damaging IDs/units.
+    fragment_fixes = {
+        "Keep foliage dry": "حافظ على جفاف المجموع الخضري",
+        "Avoid handling plants while wet": "تجنّب التعامل مع النباتات وهي مبللة",
+        "Inspect leaf undersides": "افحص السطح السفلي للأوراق",
+        "Remove heavily damaged leaves": "أزل الأوراق شديدة الضرر",
+        "Remove badly damaged leaves": "أزل الأوراق شديدة الضرر",
+        "Use safe mite control": "استخدم مكافحة آمنة للأكاروسات",
+        "Improve airflow": "حسّن حركة الهواء",
+        "Improve ventilation": "حسّن التهوية",
+        "Reduce humidity": "خفّض الرطوبة",
+        "Avoid wetting leaves": "تجنّب تبليل الأوراق",
+        "Avoid wetting tomato leaves": "تجنّب تبليل أوراق البندورة",
+        "Remove infected leaves quickly": "أزل الأوراق المصابة بسرعة",
+        "Continue monitoring": "استمر بالمراقبة",
+        "Inspect plants manually": "افحص النباتات يدويًا",
+    }
+    for bad, good in fragment_fixes.items():
+        text = re.sub(r"(?<![A-Za-z])" + re.escape(bad) + r"(?![A-Za-z])", good, text, flags=re.IGNORECASE)
+
+
+    # V24 strict last pass: catch any remaining partially translated mixed phrases.
+    text = re.sub(
+        r"No\s+[^\n]*?(?:critical|حرج)[^\n]*?matched\\s+sensor[^\n]*?(?:driver|مؤشر)?[^\n]*?found\\s+now[^\n]*",
+        "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"Keep\\s+foliage\\s+dry\\s*(?:and|و)?\\s*(?:حسّن\\s+التهوية|improve\\s+ventilation|improve\\s+airflow)?\\.*",
+        "حافظ على جفاف المجموع الخضري وحسّن التهوية.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"Avoid\\s+handling\\s+plants\\s+while\\s+wet\\.*",
+        "تجنّب التعامل مع النباتات وهي مبللة.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"Inspect\\s+leaf\\s+undersides\\s+for\\s+mites\\s*/\\s*webbing\\.*",
+        "افحص السطح السفلي للأوراق بحثًا عن الأكاروسات أو الخيوط العنكبوتية.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"Remove\\s+heavily\\s+damaged\\s+leaves\\.*",
+        "أزل الأوراق شديدة الضرر.",
+        text,
+        flags=re.IGNORECASE,
+    )
+
+
+    # V25 direct final fix for exact partially-translated sentence.
+    text = text.replace(
+        "No حرج matched sensor مؤشر was found now؛ استمر بتطبيق إجراءات المرض والمراقبة.",
+        "لا توجد قراءة مستشعرات حرجة مرتبطة مباشرة بهذا المرض الآن؛ استمر بتطبيق إجراءات المرض والمراقبة."
+    )
+
+    # Normalize spacing after mixed replacements.
+    text = text.replace(" و حسّن", " وحسّن")
+    text = text.replace("..", ".")
+    text = re.sub(r" +\\n", "\\n", text)
+    text = re.sub(r"\\n{3,}", "\\n\\n", text)
+
     return text.strip()
 
 
@@ -965,6 +1166,8 @@ def to_arabic_text(text):
     merged.update(ARABIC_YOLO_WEATHER_EXTRA)
     merged.update(ARABIC_V21_EXTRA_REPLACEMENTS)
     merged.update(ARABIC_COMPLETE_APP_PHRASES)
+    merged.update(ARABIC_V23_STRICT_PHRASES)
+    merged.update(ARABIC_V24_LATEST_REPORT_PHRASES)
 
     text = safe_english_replace(text, merged)
 
