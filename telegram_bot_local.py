@@ -1003,6 +1003,114 @@ ARABIC_V26_APP_PY_STRICT = {
 }
 
 
+
+# V27 complete Arabic phrases for automatic sensor alerts from weather_app.py.
+ARABIC_V27_SENSOR_ALERT_PHRASES = {
+    # Alert titles and fixed lines
+    "SENSOR WARNING ALERT": "تنبيه تحذيري من المستشعرات",
+    "SENSOR DANGER ALERT": "تنبيه خطير من المستشعرات",
+    "NEW SENSOR READING": "قراءة مستشعر جديدة",
+    "New LoRa sensor reading was received.": "تم استقبال قراءة LoRa جديدة من المستشعر.",
+    "Sensor Last Update": "آخر تحديث للمستشعر",
+    "Alert Time": "وقت التنبيه",
+    "WARNING DETAILS": "تفاصيل التحذير",
+    "WARNINGS BY NODE": "التحذيرات حسب العقدة",
+    "QUICK TIPS": "نصائح سريعة",
+    "SENSOR STATUS": "حالة المستشعرات",
+    "All latest live readings are within acceptable tomato ranges.": "جميع القراءات المباشرة الأخيرة ضمن المجال المقبول للبندورة.",
+    "No warning or dangerous sensor readings were found in allNodesData.": "لم يتم العثور على قراءات تحذيرية أو خطيرة في سجل جميع العقد.",
+
+    # Overall levels
+    "Dangerous": "خطير",
+    "Warning": "تحذير",
+    "Stable": "مستقر",
+    "Low": "منخفض",
+    "High": "مرتفع",
+    "Normal": "طبيعي",
+    "Good": "جيد",
+    "High Risk": "خطر مرتفع",
+
+    # Sensor analysis reasons and actions from weather_app.py
+    "No value": "لا توجد قيمة",
+    "Check sensor": "افحص المستشعر",
+    "Cold stress": "إجهاد بسبب البرودة",
+    "Close vents or use heating": "أغلق فتحات التهوية أو استخدم التدفئة",
+    "Slow growth": "نمو بطيء",
+    "Monitor temperature": "راقب درجة الحرارة",
+    "Suitable": "مناسب",
+    "No action": "لا يوجد إجراء مطلوب",
+    "Heat stress": "إجهاد حراري",
+    "Ventilate and use shade": "قم بالتهوية واستخدم التظليل",
+    "Cool, shade, and irrigate carefully": "برّد الجو، واستخدم التظليل، وقم بالري بحذر",
+
+    "Dry air / mite risk": "هواء جاف / خطر الأكاروسات",
+    "Monitor mite activity and avoid plant stress": "راقب نشاط الأكاروسات وتجنب إجهاد النبات",
+    "Fungal disease risk": "خطر أمراض فطرية",
+    "Improve ventilation": "حسّن التهوية",
+    "High fungal disease risk": "خطر مرتفع للأمراض الفطرية",
+    "Reduce humidity and keep leaves dry": "خفّض الرطوبة وحافظ على جفاف الأوراق",
+
+    "Weak photosynthesis": "ضعف في عملية التمثيل الضوئي",
+    "Improve light exposure": "حسّن تعرض النبات للضوء",
+    "Light/heat stress": "إجهاد بسبب الضوء أو الحرارة",
+    "Use shade if needed": "استخدم التظليل عند الحاجة",
+
+    "Drought stress": "إجهاد بسبب الجفاف",
+    "Irrigate": "قم بالري",
+    "Low water": "انخفاض الماء",
+    "Increase watering": "زِد كمية الري",
+    "Root/fungal risk": "خطر على الجذور أو خطر فطري",
+    "Reduce watering": "قلّل الري",
+    "Root rot risk": "خطر تعفن الجذور",
+    "Stop irrigation and improve drainage": "أوقف الري وحسّن التصريف",
+
+    "Cold root stress": "إجهاد برودة في الجذور",
+    "Warm soil": "دفّئ التربة",
+    "Slow nutrient uptake": "امتصاص بطيء للمغذيات",
+    "Monitor": "راقب",
+    "Root stress": "إجهاد في الجذور",
+    "Cool soil": "برّد التربة",
+    "Root heat stress": "إجهاد حراري في الجذور",
+    "Shade/cool soil": "ظلّل التربة أو برّدها",
+
+    "Acidic soil": "تربة حمضية",
+    "Raise pH gradually": "ارفع قيمة pH تدريجيًا",
+    "Nutrient imbalance": "اختلال في توازن المغذيات",
+    "Monitor pH": "راقب قيمة pH",
+    "Best range": "أفضل مجال",
+    "Nutrient lockout risk": "خطر صعوبة امتصاص المغذيات",
+    "Adjust pH gradually": "عدّل قيمة pH تدريجيًا",
+    "Alkaline soil": "تربة قلوية",
+    "Correct pH carefully": "صحّح قيمة pH بحذر",
+
+    "EC sensor/nutrients issue": "مشكلة في مستشعر EC أو في المغذيات",
+    "Check EC sensor and nutrient solution": "افحص مستشعر EC ومحلول المغذيات",
+    "Low nutrients": "انخفاض المغذيات",
+    "Add nutrients carefully": "أضف المغذيات بحذر",
+    "Acceptable": "مقبول",
+    "High salinity/nutrient level": "ارتفاع الملوحة أو مستوى المغذيات",
+    "Monitor EC and irrigation": "راقب قيمة EC ونظام الري",
+    "Salt stress": "إجهاد ملحي",
+    "Flush soil and reduce fertilizer": "اغسل التربة وقلّل التسميد",
+
+    # Labels that may be partially translated
+    "Problem": "المشكلة",
+    "Action": "الإجراء",
+    "Node Last Update": "آخر تحديث للعقدة",
+    "Node": "العقدة",
+    "Greenhouse": "البيت البلاستيكي",
+    "Air Temp": "حرارة الهواء",
+    "Air Temperature": "حرارة الهواء",
+    "Air Humidity": "رطوبة الهواء",
+    "Soil Moisture": "رطوبة التربة",
+    "Soil Temp": "حرارة التربة",
+    "Soil Temperature": "حرارة التربة",
+    "Soil EC": "ملوحة/توصيل التربة EC",
+    "Soil pH": "حموضة التربة pH",
+    "Light": "الإضاءة",
+}
+
+
 def safe_english_replace(text, replacements):
     # Replace full English words/phrases only. This prevents:
     # Monitor -> Monitأو, Correct -> Cأوrect, INFORMATION -> INFORMATIتشغيل.
@@ -1307,6 +1415,85 @@ def arabic_final_cleanup(text):
     for pat, repl in regex_last:
         text = re.sub(pat, repl, text, flags=re.IGNORECASE)
 
+
+    # V27 final cleanup for automatic sensor alerts from Weather App.
+    v27_fixes = {
+        "⚠️ SENSOR تحذير ALERT": "⚠️ تنبيه تحذيري من المستشعرات",
+        "🚨 SENSOR خطر مرتفع ALERT": "🚨 تنبيه خطير من المستشعرات",
+        "🚨 SENSOR DANGER ALERT": "🚨 تنبيه خطير من المستشعرات",
+        "⚠️ SENSOR WARNING ALERT": "⚠️ تنبيه تحذيري من المستشعرات",
+        "🚨 🚨 تنبيه خطير من المستشعرات": "🚨 تنبيه خطير من المستشعرات",
+        "⚠️ ⚠️ تنبيه تحذيري من المستشعرات": "⚠️ تنبيه تحذيري من المستشعرات",
+        "New LoRa sensor reading was received.": "تم استقبال قراءة LoRa جديدة من المستشعر.",
+        "🕒 Sensor آخر تحديث": "🕒 آخر تحديث للمستشعر",
+        "🕒 Sensor Last Update": "🕒 آخر تحديث للمستشعر",
+        "🕒 Alert Time": "🕒 وقت التنبيه",
+        "⚠️ تحذير DETAILS": "⚠️ تفاصيل التحذير",
+        "⚠️ WARNING DETAILS": "⚠️ تفاصيل التحذير",
+        "المشكلة: منخفض water": "المشكلة: انخفاض الماء",
+        "المشكلة: Low water": "المشكلة: انخفاض الماء",
+        "الإجراء: Increase watering": "الإجراء: زِد كمية الري",
+        "Increase watering": "زِد كمية الري",
+        "المشكلة: Drought stress": "المشكلة: إجهاد بسبب الجفاف",
+        "الإجراء: Irrigate": "الإجراء: قم بالري",
+        "Irrigate": "قم بالري",
+        "المشكلة: EC sensor/nutrients issue": "المشكلة: مشكلة في مستشعر EC أو في المغذيات",
+        "الإجراء: Check EC sensor and nutrient solution": "الإجراء: افحص مستشعر EC ومحلول المغذيات",
+        "Check EC sensor and nutrient solution": "افحص مستشعر EC ومحلول المغذيات",
+        "المشكلة: Nutrient imbalance": "المشكلة: اختلال في توازن المغذيات",
+        "الإجراء: Monitor pH": "الإجراء: راقب قيمة pH",
+        "Monitor pH": "راقب قيمة pH",
+        "المشكلة: Acidic soil": "المشكلة: تربة حمضية",
+        "الإجراء: Raise pH gradually": "الإجراء: ارفع قيمة pH تدريجيًا",
+        "Raise pH gradually": "ارفع قيمة pH تدريجيًا",
+        "المشكلة: Weak photosynthesis": "المشكلة: ضعف في عملية التمثيل الضوئي",
+        "الإجراء: Improve الإضاءة exposure": "الإجراء: حسّن تعرض النبات للضوء",
+        "Improve الإضاءة exposure": "حسّن تعرض النبات للضوء",
+        "Weak photosynthesis": "ضعف في عملية التمثيل الضوئي",
+        "Drought stress": "إجهاد بسبب الجفاف",
+        "EC sensor/nutrients issue": "مشكلة في مستشعر EC أو في المغذيات",
+        "Nutrient imbalance": "اختلال في توازن المغذيات",
+        "Acidic soil": "تربة حمضية",
+        "Low water": "انخفاض الماء",
+        "العقدة_Unknown": "العقدة_غير_معروفة",
+        "Node_Unknown": "العقدة_غير_معروفة",
+        "🟡 منخفض": "🟡 منخفض",
+    }
+    for bad, good in v27_fixes.items():
+        text = text.replace(bad, good)
+
+    # Regex fallback for any remaining Problem/Action English after partial replacement.
+    sensor_regex = [
+        (r"Problem:\s*Weak photosynthesis", "المشكلة: ضعف في عملية التمثيل الضوئي"),
+        (r"Action:\s*Improve\s+(?:Light|الإضاءة)\s+exposure", "الإجراء: حسّن تعرض النبات للضوء"),
+        (r"Problem:\s*Low water", "المشكلة: انخفاض الماء"),
+        (r"Action:\s*Increase watering", "الإجراء: زِد كمية الري"),
+        (r"Problem:\s*Drought stress", "المشكلة: إجهاد بسبب الجفاف"),
+        (r"Action:\s*Irrigate", "الإجراء: قم بالري"),
+        (r"Problem:\s*EC sensor/nutrients issue", "المشكلة: مشكلة في مستشعر EC أو في المغذيات"),
+        (r"Action:\s*Check EC sensor and nutrient solution", "الإجراء: افحص مستشعر EC ومحلول المغذيات"),
+        (r"Problem:\s*Nutrient imbalance", "المشكلة: اختلال في توازن المغذيات"),
+        (r"Action:\s*Monitor pH", "الإجراء: راقب قيمة pH"),
+        (r"Problem:\s*Acidic soil", "المشكلة: تربة حمضية"),
+        (r"Action:\s*Raise pH gradually", "الإجراء: ارفع قيمة pH تدريجيًا"),
+    ]
+    for pat, repl in sensor_regex:
+        text = re.sub(pat, repl, text, flags=re.IGNORECASE)
+
+    # Quick tips lines may be only action text; translate them too.
+    quick_tip_fixes = {
+        "• Improve الإضاءة exposure": "• حسّن تعرض النبات للضوء",
+        "• Increase watering": "• زِد كمية الري",
+        "• Irrigate": "• قم بالري",
+        "• Check EC sensor and nutrient solution": "• افحص مستشعر EC ومحلول المغذيات",
+        "• Monitor pH": "• راقب قيمة pH",
+        "• Raise pH gradually": "• ارفع قيمة pH تدريجيًا",
+    }
+    for bad, good in quick_tip_fixes.items():
+        text = text.replace(bad, good)
+
+    text = text.replace("..", ".")
+
     return text.strip()
 
 
@@ -1331,6 +1518,7 @@ def to_arabic_text(text):
     merged.update(ARABIC_V23_STRICT_PHRASES)
     merged.update(ARABIC_V24_LATEST_REPORT_PHRASES)
     merged.update(ARABIC_V26_APP_PY_STRICT)
+    merged.update(ARABIC_V27_SENSOR_ALERT_PHRASES)
 
     text = safe_english_replace(text, merged)
 
