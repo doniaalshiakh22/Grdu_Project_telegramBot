@@ -658,6 +658,134 @@ ARABIC_V21_EXTRA_REPLACEMENTS = {
 }
 
 
+
+# V22 complete Arabic phrases from YOLO app.py and weather_app.py.
+# These are exact disease/scientific/procedure strings so Arabic mode is not mixed with English.
+ARABIC_COMPLETE_APP_PHRASES = {
+    # Headings and sensor match
+    "MATCHED SENSOR READINGS": "قراءات المستشعرات المطابقة",
+    "Matched Sensor Readings": "قراءات المستشعرات المطابقة",
+    "Check range": "تحقق من المجال",
+    "Check sensor/nutrients": "تحقق من المستشعر أو المغذيات",
+    "No critical matched sensor reading for": "لا توجد قراءة مستشعرات حرجة مطابقة لـ",
+    "was found at this time.": "في هذا الوقت.",
+    "Simple advice: continue monitoring the plant and keep greenhouse conditions stable.": "نصيحة بسيطة: استمر بمراقبة النبات وحافظ على استقرار ظروف البيت البلاستيكي.",
+    "Adjust the greenhouse environment according to the critical readings above.": "عدّل بيئة البيت البلاستيكي حسب القراءات الحرجة المذكورة أعلاه.",
+    "Stabilize Air Temperature using ventilation, shading, or heating/cooling as needed.": "ثبّت حرارة الهواء باستخدام التهوية أو التظليل أو التدفئة/التبريد حسب الحاجة.",
+    "Stabilize air temperature using ventilation, shading, or heating/cooling as needed.": "ثبّت حرارة الهواء باستخدام التهوية أو التظليل أو التدفئة/التبريد حسب الحاجة.",
+    "Check and correct Soil pH gradually toward the tomato-safe range.": "افحص حموضة التربة pH وصحّحها تدريجيًا نحو المجال الآمن للبندورة.",
+    "Check and correct soil pH gradually toward the tomato-safe range.": "افحص حموضة التربة pH وصحّحها تدريجيًا نحو المجال الآمن للبندورة.",
+    "Check nutrient solution/salinity and recalibrate the EC sensor if EC is zero or abnormal.": "افحص محلول التغذية والملوحة، وأعد معايرة مستشعر EC إذا كانت القراءة صفرًا أو غير طبيعية.",
+    "Reduce humidity by increasing ventilation and avoiding water on leaves.": "خفّض الرطوبة بزيادة التهوية وتجنّب وصول الماء إلى الأوراق.",
+
+    # YOLO disease definitions, causes, symptoms, sensor relations
+    "A common fungal tomato disease, mainly caused by Alternaria species. It usually starts on older lower leaves and may spread to stems and fruits.": "مرض فطري شائع في البندورة، تسببه غالبًا فطريات Alternaria. يبدأ عادةً على الأوراق السفلية القديمة وقد ينتشر إلى السيقان والثمار.",
+    "Survives in infected plant debris, soil, and volunteer tomato plants. It spreads through splashing water, rain, overhead irrigation, wind, and contaminated tools.": "يبقى في بقايا النباتات المصابة والتربة ونباتات البندورة المتطوعة. ينتشر عبر تناثر الماء والأمطار والري من الأعلى والرياح والأدوات الملوثة.",
+    "Dark brown circular spots, often with a target or bull's-eye pattern. Leaves may turn yellow, dry, and fall.": "بقع دائرية بنية داكنة، غالبًا بشكل حلقات تشبه الهدف. قد تصفر الأوراق ثم تجف وتسقط.",
+    "Warm air temperature, high humidity, wet leaves, and high soil moisture may support disease development and spread. Abnormal pH or EC may stress the plant but does not directly cause the disease.": "قد تساعد حرارة الهواء الدافئة والرطوبة العالية وابتلال الأوراق وارتفاع رطوبة التربة على تطور المرض وانتشاره. أما اضطراب pH أو EC فيُجهد النبات لكنه لا يسبب المرض مباشرة.",
+
+    "A very destructive tomato disease caused by Phytophthora infestans. It can spread quickly under favorable cool, wet, and humid conditions.": "مرض مدمر جدًا يصيب البندورة وتسببه Phytophthora infestans. ينتشر بسرعة عند توفر ظروف باردة نسبيًا ورطبة ومشبعة بالرطوبة.",
+    "Spreads through wind, infected plant material, rain splash, and very humid conditions.": "ينتشر عبر الرياح والمواد النباتية المصابة ورذاذ المطر والظروف عالية الرطوبة.",
+    "Irregular water-soaked lesions, pale or yellowish edges, white cotton-like growth under leaves in high humidity, dark stem lesions, and brown greasy fruit spots.": "تظهر بقع غير منتظمة مشبعة بالماء، وحواف باهتة أو صفراء، ونمو أبيض قطني أسفل الأوراق عند ارتفاع الرطوبة، إضافة إلى بقع داكنة على الساق وبقع بنية دهنية على الثمار.",
+    "Very high air humidity, cool-to-mild temperature, high moisture, and wet leaves may strongly increase risk. Soil pH and EC are indirect plant-stress factors.": "الرطوبة العالية جدًا، والحرارة الباردة إلى المعتدلة، وارتفاع الرطوبة، وابتلال الأوراق تزيد الخطر بشكل كبير. أما pH و EC فهما عوامل إجهاد غير مباشرة للنبات.",
+
+    "Tiny pest organisms that feed on tomato leaves and tissues. They are pests, not fungal or bacterial diseases.": "كائنات آفات صغيرة تتغذى على أوراق وأنسجة البندورة. هي آفات وليست أمراضًا فطرية أو بكتيرية.",
+    "Can enter through infected seedlings, nearby plants, workers, tools, wind, or plant contact. They spread faster when plants are stressed, warm, and dry.": "قد تدخل عبر الشتلات المصابة أو النباتات القريبة أو العمال أو الأدوات أو الرياح أو ملامسة النباتات. تنتشر بسرعة أكبر عندما تكون النباتات مجهدة والجو دافئًا وجافًا.",
+    "Yellowing, curling, dry or brittle leaves, distortion, bronzing or russeting on leaves, stems, or fruits.": "اصفرار وتجعد وجفاف أو هشاشة في الأوراق، وتشوهات، وظهور لون برونزي أو بني محمر على الأوراق أو السيقان أو الثمار.",
+    "High air temperature, low humidity, and low soil moisture may increase plant stress and make mite damage worse. High EC or abnormal pH may also weaken plants.": "ارتفاع حرارة الهواء وانخفاض الرطوبة وانخفاض رطوبة التربة قد تزيد إجهاد النبات وتفاقم ضرر الأكاروسات. كما أن ارتفاع EC أو اضطراب pH قد يضعف النباتات.",
+
+    "A fungal tomato disease caused by Passalora fulva. It is especially common in greenhouses and mainly affects leaves.": "مرض فطري يصيب البندورة وتسببه Passalora fulva. ينتشر خاصة في البيوت البلاستيكية ويؤثر أساسًا في الأوراق.",
+    "The fungus survives in crop debris, greenhouse surfaces, and soil. It spreads by spores and becomes severe with high humidity and poor ventilation.": "يبقى الفطر في بقايا المحصول وعلى أسطح البيت البلاستيكي وفي التربة. ينتشر بالأبواغ ويشتد عند ارتفاع الرطوبة وضعف التهوية.",
+    "Pale green or yellow spots on upper leaf surfaces, with olive-green, gray, or brown mold growth on leaf undersides. Leaves may curl, dry, and fall.": "تظهر بقع خضراء باهتة أو صفراء على السطح العلوي للأوراق، مع نمو عفن زيتوني أو رمادي أو بني على السطح السفلي. قد تلتف الأوراق وتجف وتسقط.",
+    "High air humidity, especially above 85–90%, and greenhouse temperatures around 20–25°C may support leaf mold. High soil moisture may indirectly raise humidity.": "الرطوبة العالية، خاصة فوق 85–90%، وحرارة البيت البلاستيكي حول 20–25°C قد تساعد على عفن الأوراق. كما أن ارتفاع رطوبة التربة قد يرفع الرطوبة بشكل غير مباشر.",
+
+    "A viral tomato disease, commonly related to Tomato mosaic virus or Tobacco mosaic virus. Infected plants cannot be cured.": "مرض فيروسي يصيب البندورة ويرتبط غالبًا بفيروس موزاييك البندورة أو فيروس موزاييك التبغ. النباتات المصابة لا يمكن شفاؤها.",
+    "Spreads through infected seeds, transplants, plant residues, hands, tools, clothing, and plant handling activities.": "ينتشر عبر البذور والشتلات وبقايا النباتات المصابة، وكذلك عبر الأيدي والأدوات والملابس وعمليات التعامل مع النبات.",
+    "Light and dark green mosaic patterns, curled or narrow leaves, deformation, stunting, poor growth, and uneven fruit ripening.": "تظهر أنماط موزاييك خضراء فاتحة وداكنة، مع أوراق ملتفة أو ضيقة، وتشوه، وتقزم، وضعف في النمو، ونضج غير منتظم للثمار.",
+    "The sensors do not directly cause mosaic virus. Abnormal temperature, moisture, pH, or EC can stress plants and make symptoms stronger or confused with nutrient problems.": "المستشعرات لا تسبب فيروس الموزاييك مباشرة. لكن اضطراب الحرارة أو الرطوبة أو pH أو EC قد يجهد النبات ويجعل الأعراض أقوى أو تختلط مع مشكلات التغذية.",
+
+    "A fungal tomato disease caused by Septoria lycopersici. It mainly damages leaves and can cause severe defoliation.": "مرض فطري يصيب البندورة وتسببه Septoria lycopersici. يضر الأوراق بشكل أساسي وقد يسبب تساقطًا شديدًا للأوراق.",
+    "Survives on infected debris, weeds, stakes, cages, and tools. It spreads by splashing water from rain or overhead irrigation.": "يبقى على البقايا المصابة والأعشاب والدعامات والأقفاص والأدوات. ينتشر عبر تناثر الماء الناتج عن المطر أو الري من الأعلى.",
+    "Small circular spots on lower leaves with dark borders and gray or tan centers. Tiny black fruiting bodies may appear inside spots. Leaves yellow, dry, and fall.": "بقع دائرية صغيرة على الأوراق السفلية ذات حواف داكنة ومراكز رمادية أو بنية فاتحة. قد تظهر أجسام ثمرية سوداء صغيرة داخل البقع. تصفر الأوراق وتجف وتسقط.",
+    "Warm air temperature, high humidity, long leaf wetness, and high soil moisture increase risk by supporting infection and splash dispersal.": "حرارة الهواء الدافئة والرطوبة العالية وبقاء الأوراق مبللة لفترة طويلة وارتفاع رطوبة التربة تزيد الخطر لأنها تدعم العدوى وانتشار الرذاذ.",
+
+    "Small sap-sucking pests, commonly two-spotted spider mites, that damage tomato leaves by feeding on plant cells.": "آفات صغيرة ماصة للعصارة، غالبًا العنكبوت الأحمر ذو البقعتين، تضر أوراق البندورة بتغذيتها على خلايا النبات.",
+    "Increase rapidly in hot, dry, and dusty conditions, especially when plants suffer drought stress or natural predators are reduced.": "تزداد بسرعة في الظروف الحارة والجافة والمغبرة، خاصة عندما تعاني النباتات من إجهاد الجفاف أو يقل وجود الأعداء الحيوية.",
+    "Tiny yellow or white stippling spots, bronzing, drying leaves, leaf fall, and fine webbing on leaf undersides or between plant parts.": "نقاط صفراء أو بيضاء صغيرة، واصفرار أو برونزية، وجفاف الأوراق وتساقطها، ووجود خيوط دقيقة أسفل الأوراق أو بين أجزاء النبات.",
+    "High air temperature, low humidity, and low soil moisture are strong warning signs. High EC, abnormal pH, or stressful soil temperature may weaken the plant.": "ارتفاع حرارة الهواء وانخفاض الرطوبة وانخفاض رطوبة التربة مؤشرات تحذيرية قوية. كما أن ارتفاع EC أو اضطراب pH أو حرارة التربة المجهدة قد تضعف النبات.",
+
+    "A serious viral tomato disease, commonly Tomato Yellow Leaf Curl Virus, that can greatly reduce growth and yield.": "مرض فيروسي خطير يصيب البندورة، ويعرف غالبًا بفيروس تجعد واصفرار أوراق البندورة، ويمكن أن يقلل النمو والإنتاج بشكل كبير.",
+    "Mainly transmitted by whiteflies. It can also enter through infected seedlings or infected host plants.": "ينتقل أساسًا بواسطة الذباب الأبيض، وقد يدخل أيضًا عبر الشتلات المصابة أو النباتات العائلة المصابة.",
+    "Young leaves become small, yellow, and curled upward. Plants become stunted, shoots grow upright, and fruit set is reduced.": "تصبح الأوراق الحديثة صغيرة وصفراء وملتفة للأعلى. تتقزم النباتات وتنمو الأفرع للأعلى ويقل عقد الثمار.",
+    "Sensors do not directly cause the virus, but warm temperature may support whitefly activity. Low moisture, abnormal pH, or high EC can increase plant stress.": "المستشعرات لا تسبب الفيروس مباشرة، لكن الحرارة الدافئة قد تدعم نشاط الذباب الأبيض. كما أن انخفاض الرطوبة واضطراب pH أو ارتفاع EC قد يزيد إجهاد النبات.",
+
+    "A bacterial tomato disease caused by Xanthomonas species. It can affect leaves, stems, flowers, and fruits.": "مرض بكتيري يصيب البندورة وتسببه أنواع Xanthomonas. يمكن أن يؤثر في الأوراق والسيقان والأزهار والثمار.",
+    "May come from infected seeds, transplants, crop debris, and volunteer plants. It spreads by splashing water, overhead irrigation, handling, and wounds.": "قد يأتي من البذور أو الشتلات أو بقايا المحصول أو النباتات المتطوعة المصابة. ينتشر عبر تناثر الماء والري من الأعلى والملامسة والجروح.",
+    "Small dark water-soaked leaf spots that become brown or black, sometimes with yellow halos. Fruits may develop raised, rough, scabby, or dark spots.": "بقع ورقية صغيرة داكنة مشبعة بالماء تصبح بنية أو سوداء، وأحيانًا مع هالات صفراء. قد تظهر على الثمار بقع مرتفعة أو خشنة أو قشرية أو داكنة.",
+    "Warm air temperature, high humidity, high soil moisture, and wet conditions may support spread. pH and EC mainly affect plant stress, not direct bacterial infection.": "حرارة الهواء الدافئة والرطوبة العالية وارتفاع رطوبة التربة والظروف الرطبة قد تدعم الانتشار. يؤثر pH و EC غالبًا في إجهاد النبات، وليس في العدوى البكتيرية مباشرة.",
+
+    # Sensor reason texts from YOLO app.py
+    "High humidity can support leaf wetness and Early Blight spread.": "الرطوبة العالية قد تساعد على بقاء الأوراق مبللة وانتشار اللفحة المبكرة.",
+    "Warm temperature can favor Early Blight development.": "الحرارة الدافئة قد تساعد على تطور اللفحة المبكرة.",
+    "High moisture can increase humidity and water splash around lower leaves.": "ارتفاع الرطوبة قد يزيد رطوبة الجو وتناثر الماء حول الأوراق السفلية.",
+    "Abnormal pH can stress tomato plants and increase disease severity.": "اضطراب pH قد يجهد نباتات البندورة ويزيد شدة المرض.",
+    "Abnormal EC can indicate nutrient/salinity stress or sensor calibration issue.": "اضطراب EC قد يدل على إجهاد غذائي/ملحي أو مشكلة في معايرة المستشعر.",
+    "Very high humidity is a major Late Blight warning signal.": "الرطوبة العالية جدًا مؤشر تحذيري مهم للّفحة المتأخرة.",
+    "Cool-to-mild temperature can be favorable for Late Blight when humidity is high.": "الحرارة الباردة إلى المعتدلة قد تكون مناسبة للّفحة المتأخرة عند ارتفاع الرطوبة.",
+    "High moisture can support wet conditions and disease spread.": "ارتفاع الرطوبة قد يدعم الظروف الرطبة وانتشار المرض.",
+    "Very high humidity is the most important Leaf Mold risk factor.": "الرطوبة العالية جدًا هي أهم عامل خطر لعفن الأوراق.",
+    "This greenhouse temperature range can support Leaf Mold when humidity is high.": "هذا المجال من حرارة البيت البلاستيكي قد يدعم عفن الأوراق عند ارتفاع الرطوبة.",
+    "High moisture can increase humidity around tomato plants.": "ارتفاع رطوبة التربة قد يزيد الرطوبة حول نباتات البندورة.",
+    "High humidity and leaf wetness can support Septoria infection.": "الرطوبة العالية وابتلال الأوراق قد يدعمان عدوى تبقع سبتوريا.",
+    "This temperature range can be favorable for Septoria development.": "هذا المجال الحراري قد يكون مناسبًا لتطور تبقع سبتوريا.",
+    "High moisture increases splash dispersal from soil or lower leaves.": "الرطوبة العالية تزيد انتشار الرذاذ من التربة أو الأوراق السفلية.",
+    "High humidity and wet leaves can support Bacterial Spot spread.": "الرطوبة العالية وابتلال الأوراق قد يدعمان انتشار التبقع البكتيري.",
+    "Warm temperature can be favorable for Bacterial Spot development.": "الحرارة الدافئة قد تكون مناسبة لتطور التبقع البكتيري.",
+    "High moisture can increase splash spread and leaf wetness.": "الرطوبة العالية قد تزيد انتشار الرذاذ وابتلال الأوراق.",
+    "High temperature can support mite activity and faster reproduction.": "ارتفاع الحرارة قد يدعم نشاط الأكاروسات وتكاثرها بسرعة.",
+    "Low humidity can favor mite problems and dry plant stress.": "انخفاض الرطوبة قد يساعد على مشاكل الأكاروسات وإجهاد الجفاف.",
+    "Low soil moisture stresses tomato plants and can make mite damage worse.": "انخفاض رطوبة التربة يجهد نباتات البندورة وقد يزيد ضرر الأكاروسات.",
+    "Abnormal EC can increase plant stress.": "اضطراب EC قد يزيد إجهاد النبات.",
+    "Abnormal pH can increase plant stress.": "اضطراب pH قد يزيد إجهاد النبات.",
+    "Warm temperature can support whitefly activity, which spreads this virus.": "الحرارة الدافئة قد تدعم نشاط الذباب الأبيض الذي ينقل هذا الفيروس.",
+    "Low moisture can weaken infected tomato plants.": "انخفاض الرطوبة قد يضعف نباتات البندورة المصابة.",
+    "Abnormal temperature can stress plants and make viral symptoms stronger.": "اضطراب الحرارة قد يجهد النباتات ويجعل الأعراض الفيروسية أقوى.",
+    "Abnormal moisture can stress tomato plants and confuse symptoms with nutrient problems.": "اضطراب الرطوبة قد يجهد نباتات البندورة ويجعل الأعراض تختلط مع مشكلات التغذية.",
+    "Abnormal pH can cause nutrient stress and stronger symptoms.": "اضطراب pH قد يسبب إجهادًا غذائيًا وأعراضًا أقوى.",
+    "Abnormal EC can indicate nutrient/salinity stress or calibration issue.": "اضطراب EC قد يدل على إجهاد غذائي/ملحي أو مشكلة معايرة.",
+
+    # Weather app.py disease basic advice
+    "Remove infected leaves quickly.": "أزل الأوراق المصابة بسرعة.",
+    "Keep foliage dry.": "حافظ على جفاف المجموع الخضري.",
+    "Avoid working with wet plants.": "تجنّب العمل على النباتات وهي مبللة.",
+    "Inspect leaf undersides.": "افحص السطح السفلي للأوراق.",
+    "Reduce plant stress.": "قلّل إجهاد النبات.",
+    "Remove badly damaged leaves.": "أزل الأوراق المتضررة بشدة.",
+    "Use safe mite control if needed.": "استخدم مكافحة آمنة للأكاروسات عند الحاجة.",
+    "Reduce humidity.": "خفّض الرطوبة.",
+    "Remove infected leaves.": "أزل الأوراق المصابة.",
+    "Avoid wetting leaves.": "تجنّب تبليل الأوراق.",
+    "Remove strongly infected plants.": "أزل النباتات شديدة الإصابة.",
+    "Disinfect tools.": "عقّم الأدوات.",
+    "Control insects.": "كافح الحشرات.",
+    "Do not touch healthy plants after infected plants.": "لا تلمس النباتات السليمة بعد لمس النباتات المصابة.",
+    "Check leaf undersides.": "افحص السطح السفلي للأوراق.",
+    "Reduce heat and dry stress.": "قلّل إجهاد الحرارة والجفاف.",
+    "Remove damaged leaves.": "أزل الأوراق المتضررة.",
+    "Control whiteflies.": "كافح الذباب الأبيض.",
+    "Remove severely infected plants.": "أزل النباتات شديدة الإصابة.",
+    "Use insect-proof netting if possible.": "استخدم شبكًا مانعًا للحشرات إذا أمكن.",
+    "Avoid moving infected material.": "تجنّب نقل المواد النباتية المصابة.",
+    "Use disease-free seeds and seedlings.": "استخدم بذورًا وشتلات خالية من المرض.",
+    "Remove infected debris.": "أزل بقايا النباتات المصابة.",
+    "Disinfect tools and avoid working with wet plants.": "عقّم الأدوات وتجنّب العمل على النباتات وهي مبللة.",
+    "Continue normal monitoring.": "استمر بالمراقبة الطبيعية.",
+    "Keep regular irrigation and ventilation.": "حافظ على انتظام الري والتهوية.",
+    "Retake clearer close leaf images.": "أعد التقاط صور قريبة وواضحة للأوراق.",
+    "Use good lighting.": "استخدم إضاءة جيدة.",
+}
+
+
 def safe_english_replace(text, replacements):
     # Replace full English words/phrases only. This prevents:
     # Monitor -> Monitأو, Correct -> Cأوrect, INFORMATION -> INFORMATIتشغيل.
@@ -780,6 +908,42 @@ def arabic_final_cleanup(text):
     for bad, good in v21_fixes.items():
         text = text.replace(bad, good)
 
+
+    # V22 cleanup for remaining mixed phrases from disease/weather source apps.
+    v22_fixes = {
+        "🌿 MATCHED قراءات المستشعرات": "🌿 قراءات المستشعرات المطابقة",
+        "🟢 Check range": "🟢 تحقق من المجال",
+        "🔴 High الخطر": "🔴 خطر مرتفع",
+        "🟡 Check sensor/nutrients": "🟡 تحقق من المستشعر أو المغذيات",
+        "Remove مصابة plants أو leaves quickly.": "أزل النباتات أو الأوراق المصابة بسرعة.",
+        "Apply protective treatment if اللفحة المتأخرة الخطر is مرتفع.": "طبّق علاجًا وقائيًا إذا كان خطر اللفحة المتأخرة مرتفعًا.",
+        "Increase ventilation and reduce الرطوبة.": "زِد التهوية وخفّض الرطوبة.",
+        "Avoid wetting البندورة leaves.": "تجنّب تبليل أوراق البندورة.",
+        "Remove volunteer tomatoes أو potatoes.": "أزل نباتات البندورة أو البطاطا المتطوعة.",
+        "Wash mites إيقاف plants when possible.": "اغسل الأكاروسات عن النباتات عندما يكون ذلك ممكنًا.",
+        "Use biological control أو proper miticide if needed.": "استخدم المكافحة الحيوية أو مبيد أكاروسات مناسب عند الحاجة.",
+        "Avoid drought stress and reduce dust.": "تجنّب إجهاد الجفاف وقلّل الغبار.",
+        "Preserve beneficial insects.": "حافظ على الحشرات النافعة.",
+        "Inspect leaf undersides.": "افحص السطح السفلي للأوراق.",
+        "Check leaf undersides.": "افحص السطح السفلي للأوراق.",
+        "Cool-to-mild درجة الحرارة can be favorable for اللفحة المتأخرة when الرطوبة is مرتفع.": "الحرارة الباردة إلى المعتدلة قد تكون مناسبة للّفحة المتأخرة عند ارتفاع الرطوبة.",
+        "Abnormal EC can increase plant stress.": "اضطراب EC قد يزيد إجهاد النبات.",
+        "Abnormal pH can increase plant stress.": "اضطراب pH قد يزيد إجهاد النبات.",
+        "Small sap-sucking pests, commonly two-spotted العناكب الحمراء, that damage البندورة leaves by feeding تشغيل plant cells.": "آفات صغيرة ماصة للعصارة، غالبًا العنكبوت الأحمر ذو البقعتين، تضر أوراق البندورة بتغذيتها على خلايا النبات.",
+        "Increase rapidly in hot, dry, and dusty conditions, especially when plants suffer drought stress أو natural predators are reduced.": "تزداد بسرعة في الظروف الحارة والجافة والمغبرة، خاصة عندما تعاني النباتات من إجهاد الجفاف أو يقل وجود الأعداء الحيوية.",
+        "Tiny yellow أو white stippling spots, bronzing, drying leaves, leaf fall, and fine webbing تشغيل leaf undersides أو between plant parts.": "نقاط صفراء أو بيضاء صغيرة، واصفرار أو برونزية، وجفاف الأوراق وتساقطها، ووجود خيوط دقيقة أسفل الأوراق أو بين أجزاء النبات.",
+        "A very destructive البندورة disease caused by Phytophthora infestans. It can spread quickly under favorable cool, wet, and humid conditions.": "مرض مدمر جدًا يصيب البندورة وتسببه Phytophthora infestans. ينتشر بسرعة عند توفر ظروف باردة نسبيًا ورطبة ومشبعة بالرطوبة.",
+        "Spreads through الرياح, مصابة plant material, rain splash, and very humid conditions.": "ينتشر عبر الرياح والمواد النباتية المصابة ورذاذ المطر والظروف عالية الرطوبة.",
+        "Irregular water-soaked lesions, pale أو yellowish edges, white cotton-like growth under leaves in رطوبة مرتفعة, dark stem lesions, and brown greasy fruit spots.": "تظهر بقع غير منتظمة مشبعة بالماء، وحواف باهتة أو صفراء، ونمو أبيض قطني أسفل الأوراق عند ارتفاع الرطوبة، إضافة إلى بقع داكنة على الساق وبقع بنية دهنية على الثمار.",
+        "حرارة الهواء, رطوبة الهواء, رطوبة التربة, ملوحة/توصيل التربة EC/pH كعوامل إجهاد للنبات": "حرارة الهواء، رطوبة الهواء، رطوبة التربة، و EC/pH كعوامل إجهاد للنبات.",
+        "رطوبة الهواء, حرارة الهواء, رطوبة التربة": "رطوبة الهواء، حرارة الهواء، رطوبة التربة.",
+        "حرارة الهواء, رطوبة الهواء, رطوبة التربة, حموضة التربة pH/EC كعوامل إجهاد للنبات": "حرارة الهواء، رطوبة الهواء، رطوبة التربة، و pH/EC كعوامل إجهاد للنبات.",
+        "حسّن التهوية..": "حسّن التهوية.",
+        "🖼 🖼": "🖼",
+    }
+    for bad, good in v22_fixes.items():
+        text = text.replace(bad, good)
+
     return text.strip()
 
 
@@ -800,6 +964,7 @@ def to_arabic_text(text):
     merged.update(ARABIC_FULL_REPLACEMENTS)
     merged.update(ARABIC_YOLO_WEATHER_EXTRA)
     merged.update(ARABIC_V21_EXTRA_REPLACEMENTS)
+    merged.update(ARABIC_COMPLETE_APP_PHRASES)
 
     text = safe_english_replace(text, merged)
 
