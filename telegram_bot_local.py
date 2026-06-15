@@ -892,6 +892,117 @@ ARABIC_V24_LATEST_REPORT_PHRASES = {
 }
 
 
+
+# V26 complete phrases from the provided app.py and Weather disease advice.
+ARABIC_V26_APP_PY_STRICT = {
+    # Septoria and app.py actions still appearing in English
+    "Remove infected leaves and plant debris.": "أزل الأوراق المصابة وبقايا النبات.",
+    "Remove infected tomato debris.": "أزل بقايا البندورة المصابة.",
+    "Improve spacing and airflow.": "حسّن المسافات بين النباتات وحركة الهواء.",
+    "Improve spacing and greenhouse ventilation.": "حسّن المسافات بين النباتات وتهوية البيت البلاستيكي.",
+    "Improve spacing and ventilation.": "حسّن المسافات بين النباتات والتهوية.",
+    "Avoid overhead watering and keep leaves dry.": "تجنّب الري من الأعلى وحافظ على جفاف الأوراق.",
+    "Monitor nearby tomato plants and apply suitable treatment if infection spreads.": "راقب نباتات البندورة القريبة وطبّق العلاج المناسب إذا انتشرت الإصابة.",
+    "Use certified disease-free or treated seed.": "استخدم بذورًا معتمدة خالية من المرض أو معالجة.",
+    "Disinfect tools and hands.": "عقّم الأدوات واليدين.",
+    "Avoid touching healthy plants after infected plants.": "تجنّب لمس النباتات السليمة بعد النباتات المصابة.",
+    "Use yellow sticky traps.": "استخدم المصائد اللاصقة الصفراء.",
+    "Choose resistant varieties when available.": "اختر أصنافًا مقاومة عند توفرها.",
+    "Use insect-proof screens.": "استخدم شبكًا مانعًا للحشرات.",
+    "Remove infected plants and weeds.": "أزل النباتات والأعشاب المصابة.",
+    "Remove infected plants.": "أزل النباتات المصابة.",
+    "Use disease-free seeds and seedlings.": "استخدم بذورًا وشتلات خالية من المرض.",
+    "Disinfect tools and avoid working with wet plants.": "عقّم الأدوات وتجنّب العمل على النباتات وهي مبللة.",
+    "Avoid overhead irrigation.": "تجنّب الري من الأعلى.",
+    "Use mulch to reduce splash.": "استخدم الغطاء العضوي لتقليل تطاير التربة.",
+    "Disinfect tools.": "عقّم الأدوات.",
+    "Improve airflow.": "حسّن حركة الهواء.",
+    "Avoid wetting leaves.": "تجنّب تبليل الأوراق.",
+    "Remove infected debris.": "أزل بقايا النباتات المصابة.",
+
+    # Titles/captions from app.py
+    "Tomato Disease Image Result": "نتيجة صورة مرض البندورة",
+    "Tomato Healthy Image Result": "نتيجة صورة بندورة سليمة",
+    "TOMATO HEALTH STATUS": "حالة البندورة الصحية",
+    "TOMATO IMAGE QUALITY ALERT": "تنبيه جودة صورة البندورة",
+    "RESULT: Healthy": "النتيجة: سليمة",
+    "RESULT: No clear disease detection": "النتيجة: لا يوجد كشف مرض واضح",
+    "No disease was detected in the submitted tomato images.": "لم يتم اكتشاف مرض في صور البندورة المرسلة.",
+    "Some submitted images may be unclear or not focused enough for reliable disease detection.": "قد تكون بعض الصور المرسلة غير واضحة أو غير مركّزة بما يكفي لكشف المرض بشكل موثوق.",
+    "No disease alert is created from No_Detection images.": "لا يتم إنشاء تنبيه مرض من الصور التي لا تحتوي على كشف واضح.",
+    "RETAKE PHOTO TIPS": "نصائح لإعادة التقاط الصورة",
+    "Capture the leaf from the front, not from a very sharp angle.": "التقط الورقة من الأمام وليس من زاوية حادة جدًا.",
+    "If symptoms are small, take 2–3 close photos from different angles.": "إذا كانت الأعراض صغيرة، التقط 2–3 صور قريبة من زوايا مختلفة.",
+    "Avoid taking photos of keyboard, soil, wall, or background only.": "تجنّب تصوير لوحة المفاتيح أو التربة أو الجدار أو الخلفية فقط.",
+    "Move the camera closer to the tomato leaves.": "قرّب الكاميرا من أوراق البندورة.",
+    "Make sure the plant leaf fills most of the image.": "تأكد أن الورقة تملأ معظم الصورة.",
+    "Use good lighting and avoid strong glare or shadow.": "استخدم إضاءة جيدة وتجنّب الوهج أو الظلال القوية.",
+    "Hold the phone steady and keep the image focused.": "ثبّت الهاتف جيدًا واجعل الصورة واضحة.",
+    "Retake the image and run detection again.": "أعد التقاط الصورة وشغّل الكشف مرة أخرى.",
+
+    # Sensor/source phrases
+    "The matching greenhouse/plastic-house ID and node ID were found inside allNodesData history.": "تم العثور على رقم البيت البلاستيكي ورقم العقدة المطابقين داخل سجل قراءات جميع العقد.",
+    "The latest live sensor reading matches this image greenhouse/plastic-house ID and node ID.": "آخر قراءة مباشرة من المستشعرات تطابق رقم البيت البلاستيكي ورقم العقدة في الصورة.",
+    "No matching sensor record was found. Sensor readings are linked only when greenhouse/plastic-house ID and node ID both match the image location.": "لم يتم العثور على سجل مستشعرات مطابق. يتم ربط القراءات فقط عندما يتطابق رقم البيت البلاستيكي ورقم العقدة مع موقع الصورة.",
+    "Could not read sensors:": "تعذر قراءة المستشعرات:",
+    "latest_live_variables": "آخر القراءات المباشرة",
+    "allNodesData": "سجل جميع العقد",
+    "allNodesData history": "سجل قراءات جميع العقد",
+    "MATCHED SENSOR READINGS": "قراءات المستشعرات المطابقة",
+    "SENSOR MATCH STATUS": "حالة مطابقة المستشعرات",
+    "Critical sensor readings": "قراءات المستشعرات الحرجة",
+    "No critical matched sensor reading": "لا توجد قراءة مستشعرات حرجة مطابقة",
+
+    # Scientific headings and fallback
+    "SCIENTIFIC DISEASE INFORMATION": "معلومات علمية عن المرض",
+    "SCIENTIFIC INFORMATION FOR ALL DETECTED DISEASES": "معلومات علمية عن جميع الأمراض المكتشفة",
+    "No detailed scientific note is available for this class.": "لا توجد ملاحظة علمية تفصيلية متاحة لهذه الفئة.",
+    "No real disease class was detected.": "لم يتم اكتشاف فئة مرضية حقيقية.",
+    "Sensor risk indicators": "مؤشرات الخطر المرتبطة بالمستشعرات",
+    "Prevention": "الوقاية",
+    "FARMER ACTIONS": "إجراءات المزارع",
+    "FARMER ACTIONS BASED ON DETECTED DISEASES AND CRITICAL SENSOR READINGS": "إجراءات المزارع بناءً على الأمراض المكتشفة وقراءات المستشعرات الحرجة",
+
+    # Disease names/titles that should not become awkward
+    "Septoria lycopersici": "Septoria lycopersici",
+    "Phytophthora infestans": "Phytophthora infestans",
+    "Alternaria species": "أنواع Alternaria",
+    "Passalora fulva": "Passalora fulva",
+    "Tomato mosaic virus": "فيروس موزاييك البندورة",
+    "Tobacco mosaic virus": "فيروس موزاييك التبغ",
+    "Tomato Yellow Leaf Curl Virus": "فيروس تجعد واصفرار أوراق البندورة",
+    "Xanthomonas species": "أنواع Xanthomonas",
+
+    # Sensor reason strings from app.py
+    "High humidity can support leaf wetness and Early Blight spread.": "الرطوبة العالية قد تساعد على ابتلال الأوراق وانتشار اللفحة المبكرة.",
+    "Warm temperature can favor Early Blight development.": "الحرارة الدافئة قد تساعد على تطور اللفحة المبكرة.",
+    "High moisture can increase humidity and water splash around lower leaves.": "ارتفاع الرطوبة قد يزيد رطوبة الجو وتناثر الماء حول الأوراق السفلية.",
+    "Abnormal pH can stress tomato plants and increase disease severity.": "اضطراب pH قد يجهد نباتات البندورة ويزيد شدة المرض.",
+    "Abnormal EC can indicate nutrient/salinity stress or sensor calibration issue.": "اضطراب EC قد يدل على إجهاد غذائي/ملحي أو مشكلة في معايرة المستشعر.",
+    "Very high humidity is a major Late Blight warning signal.": "الرطوبة العالية جدًا مؤشر تحذيري مهم للّفحة المتأخرة.",
+    "Cool-to-mild temperature can be favorable for Late Blight when humidity is high.": "الحرارة الباردة إلى المعتدلة قد تكون مناسبة للّفحة المتأخرة عند ارتفاع الرطوبة.",
+    "High moisture can support wet conditions and disease spread.": "ارتفاع الرطوبة قد يدعم الظروف الرطبة وانتشار المرض.",
+    "Very high humidity is the most important Leaf Mold risk factor.": "الرطوبة العالية جدًا هي أهم عامل خطر لعفن الأوراق.",
+    "This greenhouse temperature range can support Leaf Mold when humidity is high.": "هذا المجال الحراري داخل البيت البلاستيكي قد يدعم عفن الأوراق عند ارتفاع الرطوبة.",
+    "High moisture can increase humidity around tomato plants.": "ارتفاع رطوبة التربة قد يزيد الرطوبة حول نباتات البندورة.",
+    "High humidity and leaf wetness can support Septoria infection.": "الرطوبة العالية وابتلال الأوراق قد يدعمان عدوى تبقع سبتوريا.",
+    "This temperature range can be favorable for Septoria development.": "هذا المجال الحراري قد يكون مناسبًا لتطور تبقع سبتوريا.",
+    "High moisture increases splash dispersal from soil or lower leaves.": "الرطوبة العالية تزيد انتشار الرذاذ من التربة أو الأوراق السفلية.",
+    "High humidity and wet leaves can support Bacterial Spot spread.": "الرطوبة العالية وابتلال الأوراق قد يدعمان انتشار التبقع البكتيري.",
+    "Warm temperature can be favorable for Bacterial Spot development.": "الحرارة الدافئة قد تكون مناسبة لتطور التبقع البكتيري.",
+    "High moisture can increase splash spread and leaf wetness.": "الرطوبة العالية قد تزيد انتشار الرذاذ وابتلال الأوراق.",
+    "High temperature can support mite activity and faster reproduction.": "ارتفاع الحرارة قد يدعم نشاط الأكاروسات وتكاثرها بسرعة.",
+    "Low humidity can favor mite problems and dry plant stress.": "انخفاض الرطوبة قد يساعد على مشاكل الأكاروسات وإجهاد الجفاف.",
+    "Low soil moisture stresses tomato plants and can make mite damage worse.": "انخفاض رطوبة التربة يجهد نباتات البندورة وقد يزيد ضرر الأكاروسات.",
+    "Warm temperature can support whitefly activity, which spreads this virus.": "الحرارة الدافئة قد تدعم نشاط الذباب الأبيض الذي ينقل هذا الفيروس.",
+    "Low moisture can weaken infected tomato plants.": "انخفاض الرطوبة قد يضعف نباتات البندورة المصابة.",
+    "Abnormal temperature can stress plants and make viral symptoms stronger.": "اضطراب الحرارة قد يجهد النباتات ويجعل الأعراض الفيروسية أقوى.",
+    "Abnormal moisture can stress tomato plants and confuse symptoms with nutrient problems.": "اضطراب الرطوبة قد يجهد نباتات البندورة ويجعل الأعراض تختلط مع مشاكل التغذية.",
+    "Abnormal pH can cause nutrient stress and stronger symptoms.": "اضطراب pH قد يسبب إجهادًا غذائيًا وأعراضًا أقوى.",
+    "Abnormal EC can indicate nutrient/salinity stress or calibration issue.": "اضطراب EC قد يدل على إجهاد غذائي/ملحي أو مشكلة معايرة.",
+}
+
+
 def safe_english_replace(text, replacements):
     # Replace full English words/phrases only. This prevents:
     # Monitor -> Monitأو, Correct -> Cأوrect, INFORMATION -> INFORMATIتشغيل.
@@ -1145,6 +1256,57 @@ def arabic_final_cleanup(text):
     text = re.sub(r" +\\n", "\\n", text)
     text = re.sub(r"\\n{3,}", "\\n\\n", text)
 
+
+    # V26 final cleanup for partially translated app.py/weather_app.py output.
+    v26_fixes = {
+        "مرض فطري يصيب البندورة وتسببه تبقع سبتوريا lycopersici.": "مرض فطري يصيب البندورة وتسببه فطريات Septoria lycopersici.",
+        "تسببه تبقع سبتوريا lycopersici": "تسببه فطريات Septoria lycopersici",
+        "Remove مصابة leaves and plant debris.": "أزل الأوراق المصابة وبقايا النبات.",
+        "Remove infected leaves and plant debris.": "أزل الأوراق المصابة وبقايا النبات.",
+        "Improve spacing and airflow.": "حسّن المسافات بين النباتات وحركة الهواء.",
+        "🖼 ✅ البندورة سليمة صورة نتيجة": "✅ نتيجة صورة بندورة سليمة",
+        "✅ البندورة سليمة صورة نتيجة": "✅ نتيجة صورة بندورة سليمة",
+        "🖼 🖼 نتيجة صورة مرض البندورة": "🖼 نتيجة صورة مرض البندورة",
+        "🖼 🖼 Tomato Disease Image Result": "🖼 نتيجة صورة مرض البندورة",
+        "🖼 ✅ Tomato Healthy Image Result": "✅ نتيجة صورة بندورة سليمة",
+        "Tomato Healthy Image Result": "نتيجة صورة بندورة سليمة",
+        "Tomato Disease Image Result": "نتيجة صورة مرض البندورة",
+        "🟢 تحقق من المجال": "🟢 ضمن المجال المقبول",
+        "Check range": "تحقق من المجال",
+        "No detailed scientific note is available for this class.": "لا توجد ملاحظة علمية تفصيلية متاحة لهذه الفئة.",
+        "No real disease class was detected.": "لم يتم اكتشاف فئة مرضية حقيقية.",
+        "Simple advice: continue monitoring the plant and keep greenhouse conditions stable.": "نصيحة بسيطة: استمر بمراقبة النبات وحافظ على استقرار ظروف البيت البلاستيكي.",
+        "No critical matched sensor reading": "لا توجد قراءة مستشعرات حرجة مطابقة",
+        "was found at this time.": "في هذا الوقت.",
+        "Healthy Images": "الصور السليمة",
+        "No Detection Images": "صور بدون كشف",
+        "Total Images": "إجمالي الصور",
+        "Detected images": "الصور التي تم الكشف فيها",
+        "Detected Images": "عدد الصور المكتشفة",
+        "Image Result": "نتيجة الصورة",
+        "Disease Class": "فئة المرض",
+        "Average Confidence": "متوسط نسبة الثقة",
+    }
+    for bad, good in v26_fixes.items():
+        text = text.replace(bad, good)
+
+    # Regex fallbacks for action lines that may be partially translated.
+    regex_last = [
+        (r"Remove\s+(?:infected|مصابة)\s+leaves\s+and\s+plant\s+debris\.?", "أزل الأوراق المصابة وبقايا النبات."),
+        (r"Improve\s+spacing\s+and\s+airflow\.?", "حسّن المسافات بين النباتات وحركة الهواء."),
+        (r"Improve\s+spacing\s+and\s+greenhouse\s+ventilation\.?", "حسّن المسافات بين النباتات وتهوية البيت البلاستيكي."),
+        (r"Avoid\s+overhead\s+watering\s+and\s+keep\s+leaves\s+dry\.?", "تجنّب الري من الأعلى وحافظ على جفاف الأوراق."),
+        (r"Monitor\s+nearby\s+tomato\s+plants\s+and\s+apply\s+suitable\s+treatment\s+if\s+infection\s+spreads\.?", "راقب نباتات البندورة القريبة وطبّق العلاج المناسب إذا انتشرت الإصابة."),
+        (r"Use\s+mulch\s+to\s+reduce\s+splash\.?", "استخدم الغطاء العضوي لتقليل تطاير التربة."),
+        (r"Disinfect\s+tools\.?", "عقّم الأدوات."),
+        (r"Check\s+leaf\s+undersides\.?", "افحص السطح السفلي للأوراق."),
+        (r"Reduce\s+heat\s+and\s+dry\s+stress\.?", "قلّل إجهاد الحرارة والجفاف."),
+        (r"Remove\s+damaged\s+leaves\.?", "أزل الأوراق المتضررة."),
+        (r"Use\s+safe\s+mite\s+control\s+if\s+needed\.?", "استخدم مكافحة آمنة للأكاروسات عند الحاجة."),
+    ]
+    for pat, repl in regex_last:
+        text = re.sub(pat, repl, text, flags=re.IGNORECASE)
+
     return text.strip()
 
 
@@ -1168,6 +1330,7 @@ def to_arabic_text(text):
     merged.update(ARABIC_COMPLETE_APP_PHRASES)
     merged.update(ARABIC_V23_STRICT_PHRASES)
     merged.update(ARABIC_V24_LATEST_REPORT_PHRASES)
+    merged.update(ARABIC_V26_APP_PY_STRICT)
 
     text = safe_english_replace(text, merged)
 
