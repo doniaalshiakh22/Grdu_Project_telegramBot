@@ -558,13 +558,82 @@ ARABIC_FULL_REPLACEMENTS = {
 }
 
 
+
+# V20 extra phrases: YOLO automatic messages, Weather App messages, and mixed English lines.
+ARABIC_YOLO_WEATHER_EXTRA = {
+    "Greenhouse / Plastic House": "البيت البلاستيكي",
+    "Plastic House": "البيت البلاستيكي",
+    "Crop": "المحصول",
+    "Tomato": "البندورة",
+    "DISEASE RESULT": "نتيجة المرض",
+    "Disease Result": "نتيجة المرض",
+    "Average Confidence": "متوسط نسبة الثقة",
+    "Average": "متوسط",
+    "Total Images": "إجمالي الصور",
+    "Infected Images": "الصور المصابة",
+    "Healthy Images": "الصور السليمة",
+    "No Detection Images": "صور بدون كشف",
+    "Disease Counts": "عدد الأمراض",
+    "SENSOR MATCH STATUS": "حالة مطابقة المستشعرات",
+    "Sensor Match Status": "حالة مطابقة المستشعرات",
+    "No matched sensor link was added.": "لم تتم إضافة ربط مطابق مع قراءات المستشعرات.",
+    "The system checked both": "فحص النظام المصدرين التاليين",
+    "allNodesData history": "سجل قراءات جميع العقد",
+    "latest live sensor variables": "آخر قراءات مباشرة من المستشعرات",
+    "Sensor readings are linked to the disease alert only when the selected image greenhouse/plastic-house ID and node ID both match the sensor record.": "يتم ربط قراءات المستشعرات بتنبيه المرض فقط عندما يتطابق رقم البيت البلاستيكي ورقم العقدة في الصورة مع سجل المستشعرات.",
+    "Sensor readings are linked to the disease alert only when the selected image greenhouse/plastic-house ID and node ID both match the sensor record": "يتم ربط قراءات المستشعرات بتنبيه المرض فقط عندما يتطابق رقم البيت البلاستيكي ورقم العقدة في الصورة مع سجل المستشعرات",
+    "Latest live sensor record": "آخر سجل مباشر للمستشعرات",
+    "SCIENTIFIC INFORMATION FOR ALL DETECTED DISEASES": "معلومات علمية عن الأمراض المكتشفة",
+    "Scientific Information For All Detected Diseases": "معلومات علمية عن الأمراض المكتشفة",
+    "Disease 1": "المرض 1",
+    "Disease 2": "المرض 2",
+    "Disease 3": "المرض 3",
+    "Definition": "التعريف",
+    "Causes / Spread": "الأسباب وطريقة الانتشار",
+    "Main Symptoms": "الأعراض الرئيسية",
+    "Related sensor indicators": "المؤشرات المرتبطة بالمستشعرات",
+    "Critical sensor readings": "قراءات المستشعرات الحرجة",
+    "Not linked because greenhouse/plastic-house ID and node ID did not both match the sensor record.": "غير مرتبط لأن رقم البيت البلاستيكي ورقم العقدة لا يتطابقان مع سجل المستشعرات.",
+    "Not linked because greenhouse/plastic-house ID and node ID did not both match the sensor record": "غير مرتبط لأن رقم البيت البلاستيكي ورقم العقدة لا يتطابقان مع سجل المستشعرات",
+    "FARMER ACTIONS BASED ON DETECTED DISEASES AND CRITICAL SENSOR READINGS": "إجراءات المزارع بناءً على الأمراض المكتشفة وقراءات المستشعرات الحرجة",
+    "Farmer Actions Based On Detected Diseases And Critical Sensor Readings": "إجراءات المزارع بناءً على الأمراض المكتشفة وقراءات المستشعرات الحرجة",
+    "Tomato Disease Image Result": "نتيجة صورة مرض البندورة",
+    "Improve spacing and greenhouse ventilation.": "حسّن المسافات بين النباتات وتهوية البيت البلاستيكي.",
+    "Avoid overhead watering and keep leaves dry.": "تجنّب الري من الأعلى وحافظ على جفاف الأوراق.",
+    "Monitor nearby tomato plants and apply suitable treatment if infection spreads.": "راقب نباتات البندورة القريبة وطبّق العلاج المناسب إذا انتشرت الإصابة.",
+    "Sensor readings were not linked because greenhouse/plastic-house ID and node ID did not both match; verify the selected node and sensor source.": "لم يتم ربط قراءات المستشعرات لأن رقم البيت البلاستيكي ورقم العقدة لا يتطابقان مع سجل المستشعرات؛ تأكد من العقدة المختارة ومصدر القراءات.",
+    "sensor readings were not linked because greenhouse/plastic-house ID and node ID did not both match; verify the selected node and sensor source.": "لم يتم ربط قراءات المستشعرات لأن رقم البيت البلاستيكي ورقم العقدة لا يتطابقان مع سجل المستشعرات؛ تأكد من العقدة المختارة ومصدر القراءات.",
+    "Keep leaves dry; avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+    "Keep leaves dry؛ avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+    "keep leaves dry; avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+    "A common fungal tomato disease, mainly caused by Alternaria species. It usually starts on older lower leaves and may spread to stems and fruits.": "مرض فطري شائع في البندورة، تسببه غالبًا فطريات Alternaria. يبدأ عادةً على الأوراق السفلية القديمة وقد ينتشر إلى السيقان والثمار.",
+    "Survives in infected plant debris, soil, and volunteer tomato plants. It spreads through splashing water, rain, overhead irrigation, wind, and contaminated tools.": "يبقى في بقايا النباتات المصابة والتربة ونباتات البندورة المتطوعة. ينتشر عبر تناثر الماء والأمطار والري من الأعلى والرياح والأدوات الملوثة.",
+    "Dark brown circular spots, often with a target or bull's-eye pattern. Leaves may turn yellow, dry, and fall.": "بقع دائرية بنية داكنة، غالبًا بشكل حلقات تشبه الهدف. قد تصفر الأوراق ثم تجف وتسقط.",
+    "air humidity, air temperature, soil moisture, soil pH/EC as stress factors": "رطوبة الهواء، حرارة الهواء، رطوبة التربة، و pH/EC كعوامل إجهاد للنبات",
+    "Air humidity, air temperature, soil moisture, soil pH/EC as stress factors": "رطوبة الهواء، حرارة الهواء، رطوبة التربة، و pH/EC كعوامل إجهاد للنبات",
+    "as stress factors": "كعوامل إجهاد للنبات",
+    "detected images": "الصور التي تم الكشف فيها",
+    "Detected images": "الصور التي تم الكشف فيها",
+    "Weather Information": "معلومات الطقس",
+    "INFORMATION": "معلومات",
+    "Outside temperature": "درجة الحرارة الخارجية",
+    "Outside humidity": "الرطوبة الخارجية",
+    "Weather status": "حالة الطقس",
+    "Weather Status": "حالة الطقس",
+    "Tomato Weather Risk": "مخاطر الطقس على البندورة",
+    "High humidity": "رطوبة مرتفعة",
+    "high humidity": "رطوبة مرتفعة",
+    "Inspect lower leaves for spots or mold.": "افحص الأوراق السفلية بحثًا عن بقع أو عفن.",
+}
+
+
 def safe_english_replace(text, replacements):
     # Replace full English words/phrases only. This prevents:
     # Monitor -> Monitأو, Correct -> Cأوrect, INFORMATION -> INFORMATIتشغيل.
     for en in sorted(replacements, key=len, reverse=True):
         ar = replacements[en]
         pattern = r"(?<![A-Za-z])" + re.escape(en) + r"(?![A-Za-z])"
-        text = re.sub(pattern, ar, text)
+        text = re.sub(pattern, ar, text, flags=re.IGNORECASE)
     return text
 
 
@@ -596,6 +665,53 @@ def arabic_final_cleanup(text):
     }
     for bad, good in fixes.items():
         text = text.replace(bad, good)
+
+
+    # Extra V20 cleanup for mixed English that may arrive from Weather App or YOLO App.
+    extra_fixes = {
+        "Keep leaves dry؛ avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+        "Keep leaves dry; avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+        "🏠 البيت البلاستيكي / Plastic House": "🏠 البيت البلاستيكي",
+        "🍅 Crop: Tomato": "🍅 المحصول: البندورة",
+        "🚨 DISEASE RESULT": "🚨 نتيجة المرض",
+        "Average نسبة الثقة": "متوسط نسبة الثقة",
+        "🌿 SENSOR MATCH STATUS": "🌿 حالة مطابقة المستشعرات",
+        "⚪ No matched sensor link was added.": "⚪ لم تتم إضافة ربط مطابق مع قراءات المستشعرات.",
+        "The system checked both:": "فحص النظام المصدرين التاليين:",
+        "1️⃣ allNodesData history": "1️⃣ سجل قراءات جميع العقد",
+        "2️⃣ latest live sensor variables": "2️⃣ آخر قراءات مباشرة من المستشعرات",
+        "قراءات المستشعرات are linked to the disease alert only when the selected صورة greenhouse/plastic-house ID and node ID both match the sensor record.": "يتم ربط قراءات المستشعرات بتنبيه المرض فقط عندما يتطابق رقم البيت البلاستيكي ورقم العقدة في الصورة مع سجل المستشعرات.",
+        "Latest live sensor record:": "آخر سجل مباشر للمستشعرات:",
+        "📚 SCIENTIFIC INFORMATION FOR ALL DETECTED DISEASES": "📚 معلومات علمية عن الأمراض المكتشفة",
+        "📌 Definition:": "📌 التعريف:",
+        "🧬 Causes / Spread:": "🧬 الأسباب وطريقة الانتشار:",
+        "🔎 Main Symptoms:": "🔎 الأعراض الرئيسية:",
+        "📡 Related sensor indicators:": "📡 المؤشرات المرتبطة بالمستشعرات:",
+        "📊 حرج sensor readings:": "📊 قراءات المستشعرات الحرجة:",
+        "⚪ Not linked because greenhouse/plastic-house ID and node ID did not both match the sensor record.": "⚪ غير مرتبط لأن رقم البيت البلاستيكي ورقم العقدة لا يتطابقان مع سجل المستشعرات.",
+        "👨‍🌾 FARMER ACTIONS BASED تشغيل DETECTED DISEASES AND CRITICAL SENSOR READINGS": "👨‍🌾 إجراءات المزارع بناءً على الأمراض المكتشفة وقراءات المستشعرات الحرجة",
+        "• Improve spacing and greenhouse ventilation.": "• حسّن المسافات بين النباتات وتهوية البيت البلاستيكي.",
+        "• Avoid overhead watering and keep leaves dry.": "• تجنّب الري من الأعلى وحافظ على جفاف الأوراق.",
+        "• Monitor nearby tomato plants and apply suitable treatment if infection spreads.": "• راقب نباتات البندورة القريبة وطبّق العلاج المناسب إذا انتشرت الإصابة.",
+        "• قراءات المستشعرات were not linked because greenhouse/plastic-house ID and node ID did not both match؛ verify the selected node and sensor source.": "• لم يتم ربط قراءات المستشعرات لأن رقم البيت البلاستيكي ورقم العقدة لا يتطابقان مع سجل المستشعرات؛ تأكد من العقدة المختارة ومصدر القراءات.",
+        "🖼 Tomato Disease Image Result": "🖼 نتيجة صورة مرض البندورة",
+        "A common fungal tomato disease, mainly caused by Alternaria species. It usually starts on older lower leaves and may spread to stems and fruits.": "مرض فطري شائع في البندورة، تسببه غالبًا فطريات Alternaria. يبدأ عادةً على الأوراق السفلية القديمة وقد ينتشر إلى السيقان والثمار.",
+        "Survives in مصابة plant debris, soil, and volunteer tomato plants. It spreads through splashing water, rain, overhead irrigation, wind, and contaminated tools.": "يبقى في بقايا النباتات المصابة والتربة ونباتات البندورة المتطوعة. ينتشر عبر تناثر الماء والأمطار والري من الأعلى والرياح والأدوات الملوثة.",
+        "Dark brown circular spots, often with a target أو bull's-eye pattern. Leaves may turn yellow, dry, and fall.": "بقع دائرية بنية داكنة، غالبًا بشكل حلقات تشبه الهدف. قد تصفر الأوراق ثم تجف وتسقط.",
+        "رطوبة الهواء, حرارة الهواء, رطوبة التربة, حموضة التربة pH/EC as stress factors": "رطوبة الهواء، حرارة الهواء، رطوبة التربة، و pH/EC كعوامل إجهاد للنبات.",
+        "تم الكشف عن الصور": "الصور التي تم الكشف فيها",
+        "المجموع الصور": "إجمالي الصور",
+        "مصابة الصور": "الصور المصابة",
+        "سليمة الصور": "الصور السليمة",
+        "لا يوجد كشف الصور": "صور بدون كشف",
+    }
+    for bad, good in extra_fixes.items():
+        text = text.replace(bad, good)
+
+    # Remove duplicated leading emojis/titles caused by source title + translation title.
+    text = re.sub(r"^(📋)\s+\1\s+", r"\1 ", text, flags=re.MULTILINE)
+    text = re.sub(r"^(🦠)\s+\1\s+", r"\1 ", text, flags=re.MULTILINE)
+    text = re.sub(r"^(🌤)\s+\1\s+", r"\1 ", text, flags=re.MULTILINE)
 
     # Clean remaining common English punctuation/labels.
     text = text.replace("Problem:", "المشكلة:")
@@ -634,6 +750,7 @@ def to_arabic_text(text):
     except Exception:
         pass
     merged.update(ARABIC_FULL_REPLACEMENTS)
+    merged.update(ARABIC_YOLO_WEATHER_EXTRA)
 
     text = safe_english_replace(text, merged)
 
