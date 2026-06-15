@@ -627,6 +627,37 @@ ARABIC_YOLO_WEATHER_EXTRA = {
 }
 
 
+
+# V21 extra cleanup for remaining mixed Weather/Yolo text.
+ARABIC_V21_EXTRA_REPLACEMENTS = {
+    "Very high humidity can support fungal diseases such as Leaf Mold, Late Blight, and Septoria.": "الرطوبة العالية جدًا قد تساعد على انتشار أمراض فطرية مثل عفن الأوراق واللفحة المتأخرة وتبقع سبتوريا.",
+    "very high humidity can support fungal diseases such as Leaf Mold, Late Blight, and Septoria.": "الرطوبة العالية جدًا قد تساعد على انتشار أمراض فطرية مثل عفن الأوراق واللفحة المتأخرة وتبقع سبتوريا.",
+    "Very High humidity can support fungal diseases such as Leaf Mold, Late Blight, and Septoria.": "الرطوبة العالية جدًا قد تساعد على انتشار أمراض فطرية مثل عفن الأوراق واللفحة المتأخرة وتبقع سبتوريا.",
+    "Improve ventilation when safe.": "حسّن التهوية عندما يكون ذلك آمنًا.",
+    "Improve ventilation when safe": "حسّن التهوية عندما يكون ذلك آمنًا",
+    "when safe": "عندما يكون ذلك آمنًا",
+    "when Safe": "عندما يكون ذلك آمنًا",
+    "Keep leaves dry; avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+    "Keep leaves dry؛ avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+    "Keep leaves dry; avoid overhead watering": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى",
+    "No matched sensor link was added.": "لم تتم إضافة ربط مطابق مع قراءات المستشعرات.",
+    "The system checked both:": "فحص النظام المصدرين التاليين:",
+    "Sensor readings are linked to the disease alert only when the selected image greenhouse/plastic-house ID and node ID both match the sensor record.": "يتم ربط قراءات المستشعرات بتنبيه المرض فقط عندما يتطابق رقم البيت البلاستيكي ورقم العقدة في الصورة مع سجل المستشعرات.",
+    "Latest live sensor record:": "آخر سجل مباشر للمستشعرات:",
+    "Greenhouse / Plastic House": "البيت البلاستيكي",
+    "Greenhouse/plastic-house": "البيت البلاستيكي",
+    "greenhouse/plastic-house": "البيت البلاستيكي",
+    "selected image": "الصورة المختارة",
+    "latest live sensor variables": "آخر قراءات مباشرة من المستشعرات",
+    "allNodesData history": "سجل قراءات جميع العقد",
+    "Average Confidence": "متوسط نسبة الثقة",
+    "Total Images": "إجمالي الصور",
+    "Infected Images": "الصور المصابة",
+    "Healthy Images": "الصور السليمة",
+    "No Detection Images": "صور بدون كشف",
+}
+
+
 def safe_english_replace(text, replacements):
     # Replace full English words/phrases only. This prevents:
     # Monitor -> Monitأو, Correct -> Cأوrect, INFORMATION -> INFORMATIتشغيل.
@@ -732,6 +763,23 @@ def arabic_final_cleanup(text):
     # Arabic tidy-up.
     text = re.sub(r" +\n", "\n", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
+
+    # V21 exact cleanup for remaining mixed Arabic/English phrases.
+    v21_fixes = {
+        "Very رطوبة مرتفعة can support fungal diseases such as عفن الأوراق, اللفحة المتأخرة, and تبقع سبتوريا.": "الرطوبة العالية جدًا قد تساعد على انتشار أمراض فطرية مثل عفن الأوراق واللفحة المتأخرة وتبقع سبتوريا.",
+        "Very الرطوبة المرتفعة can support fungal diseases such as عفن الأوراق, اللفحة المتأخرة, and تبقع سبتوريا.": "الرطوبة العالية جدًا قد تساعد على انتشار أمراض فطرية مثل عفن الأوراق واللفحة المتأخرة وتبقع سبتوريا.",
+        "حسّن التهوية. when آمن.": "حسّن التهوية عندما يكون ذلك آمنًا.",
+        "حسّن التهوية. عندما يكون ذلك آمنًا.": "حسّن التهوية عندما يكون ذلك آمنًا.",
+        "حافظ على جفاف الأوراق؛ avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+        "Keep leaves dry؛ avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+        "Keep leaves dry; avoid overhead watering.": "حافظ على جفاف الأوراق؛ وتجنّب الري من الأعلى.",
+        "📋 📋": "📋",
+        "🦠 🦠": "🦠",
+        "🌤 🌤": "🌤",
+    }
+    for bad, good in v21_fixes.items():
+        text = text.replace(bad, good)
+
     return text.strip()
 
 
@@ -751,6 +799,7 @@ def to_arabic_text(text):
         pass
     merged.update(ARABIC_FULL_REPLACEMENTS)
     merged.update(ARABIC_YOLO_WEATHER_EXTRA)
+    merged.update(ARABIC_V21_EXTRA_REPLACEMENTS)
 
     text = safe_english_replace(text, merged)
 
@@ -910,7 +959,8 @@ def send_message(text, reply_markup=None, chat_id=None, timeout=30, translate=Tr
     for idx, part in enumerate(chunks):
         data = {
             "chat_id": chat_id,
-            "text": part
+            "text": part,
+            "disable_web_page_preview": "true"
         }
 
         # Attach buttons to the last chunk only, so long reports do not repeat the keyboard payload.
