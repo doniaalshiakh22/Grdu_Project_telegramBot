@@ -363,46 +363,294 @@ AR_EXTRA_REPLACEMENTS = {
 }
 
 
+
+# Strong Arabic dictionary used for any message coming from Weather App or YOLO App.
+# It is applied safely using English word boundaries, so words like Monitor/Correct/Information
+# are not broken by small replacements such as "or" or "ON".
+ARABIC_FULL_REPLACEMENTS = {
+    # Main titles
+    "TOMATO DISEASE REPORT": "🦠 تقرير أمراض البندورة",
+    "AI TOMATO DISEASE DETECTION ALERT": "🦠 تنبيه كشف أمراض البندورة بالذكاء الاصطناعي",
+    "CURRENT GREENHOUSE READINGS REPORT": "📊 تقرير قراءات البيت البلاستيكي الحالية",
+    "SENSOR DANGER ALERT": "🚨 تنبيه خطير من المستشعرات",
+    "SENSOR WARNING REPORT": "⚠️ تقرير تحذيري من المستشعرات",
+    "SMART GREENHOUSE REPORT": "📋 تقرير البيت البلاستيكي الذكي",
+    "GREENHOUSE WEATHER REPORT": "🌤 تقرير طقس البيت البلاستيكي",
+    "WEATHER INFORMATION": "🌤 معلومات الطقس",
+    "WEATHER INFO": "🌤 معلومات الطقس",
+    "WEATHER UPDATED": "✅ تم تحديث الطقس",
+    "Tomato Weather Risk": "مخاطر الطقس على البندورة",
+    "TOMATO WEATHER RISK": "مخاطر الطقس على البندورة",
+    "Weather Risk Forecast": "توقعات مخاطر الطقس",
+    "WEATHER RISK FORECAST": "توقعات مخاطر الطقس",
+    "Weather Risk": "مخاطر الطقس",
+    "Weather Alert": "تنبيه الطقس",
+    "Weather Warning": "تنبيه الطقس",
+    "Weather Status": "حالة الطقس",
+    "Weather actions": "إجراءات الطقس",
+    "Farmer procedures": "إجراءات المزارع",
+    "QUICK TIPS": "نصائح سريعة",
+    "SENSOR STATUS BY NODE": "حالة المستشعرات حسب العقدة",
+    "WARNINGS BY NODE": "التحذيرات حسب العقدة",
+    "NODE SENSOR + MATCHED DISEASE SUMMARY": "ملخص قراءات العقد والمرض المطابق",
+    "DAILY FARMER PRIORITIES": "أولويات المزارع اليومية",
+    "LATEST DISEASE STATUS": "آخر حالة مرضية",
+    "Disease Report": "تقرير الأمراض",
+
+    # Labels
+    "Latest Greenhouse": "آخر بيت بلاستيكي",
+    "Latest Live Node": "آخر عقدة مباشرة",
+    "Sensor Thing Last Update": "آخر تحديث لقراءات المستشعرات",
+    "Report Time": "وقت التقرير",
+    "Update Time": "وقت التحديث",
+    "Updated": "وقت التحديث",
+    "Last Update": "آخر تحديث",
+    "Date": "التاريخ",
+    "Greenhouse": "البيت البلاستيكي",
+    "Node": "العقدة",
+    "node update": "وقت تحديث العقدة",
+    "Node update": "وقت تحديث العقدة",
+    "Disease update": "وقت تحديث المرض",
+    "Status": "الحالة",
+    "Disease Status": "حالة المرض",
+    "Disease result": "نتيجة المرض",
+    "Matched disease result": "نتيجة المرض المطابق",
+    "matched disease result": "نتيجة المرض المطابق",
+    "Detected": "تم الكشف عن",
+    "Most likely": "الأكثر احتمالًا",
+    "Most Disease": "أكثر مرض ظاهر",
+    "All Diseases": "جميع الأمراض",
+    "Disease Counts": "عدد الأمراض",
+    "Confidence": "نسبة الثقة",
+    "Images": "الصور",
+    "images": "الصور",
+    "image": "صورة",
+    "img": "صورة",
+    "Total": "المجموع",
+    "total": "المجموع",
+    "Infected": "مصابة",
+    "infected": "مصابة",
+    "Healthy": "سليمة",
+    "healthy": "سليمة",
+    "No Detection": "لا يوجد كشف",
+    "no detection": "لا يوجد كشف",
+    "Disease Detected": "تم اكتشاف مرض",
+    "No Disease Detected": "لم يتم اكتشاف مرض",
+    "Disease LED": "مؤشر المرض",
+    "Problem": "المشكلة",
+    "Action": "الإجراء",
+    "Risk": "الخطر",
+    "SUMMARY": "ملخص",
+
+    # Sensors and weather
+    "Sensor readings": "قراءات المستشعرات",
+    "Sensor recommendations": "توصيات المستشعرات",
+    "Recommendations": "التوصيات",
+    "Air Temp": "حرارة الهواء",
+    "Air Temperature": "حرارة الهواء",
+    "Outside Temperature": "درجة الحرارة الخارجية",
+    "Outside Humidity": "الرطوبة الخارجية",
+    "Temperature": "درجة الحرارة",
+    "Humidity": "الرطوبة",
+    "Air Humidity": "رطوبة الهواء",
+    "Wind Speed": "سرعة الرياح",
+    "Wind": "الرياح",
+    "Soil Moisture": "رطوبة التربة",
+    "Soil moisture": "رطوبة التربة",
+    "Soil Temp": "حرارة التربة",
+    "Soil temp": "حرارة التربة",
+    "Soil Temperature": "حرارة التربة",
+    "Soil EC": "ملوحة/توصيل التربة EC",
+    "Soil pH": "حموضة التربة pH",
+    "Light": "الإضاءة",
+    "LDR": "الإضاءة",
+
+    # Status words
+    "Dangerous": "خطير",
+    "Warning": "تحذير",
+    "Good": "جيد",
+    "Normal": "طبيعي",
+    "Stable": "مستقر",
+    "High Risk": "خطر مرتفع",
+    "Very High": "مرتفع جدًا",
+    "Very Low": "منخفض جدًا",
+    "High": "مرتفع",
+    "Low": "منخفض",
+    "Critical": "حرج",
+    "Safe": "آمن",
+    "ON": "تشغيل",
+    "OFF": "إيقاف",
+
+    # Disease names
+    "Early_Blight": "اللفحة المبكرة",
+    "Early Blight": "اللفحة المبكرة",
+    "Late_Blight": "اللفحة المتأخرة",
+    "Late Blight": "اللفحة المتأخرة",
+    "Leaf_Mold": "عفن الأوراق",
+    "Leaf Mold": "عفن الأوراق",
+    "Septoria Leaf Spot": "تبقع سبتوريا",
+    "Septoria": "تبقع سبتوريا",
+    "Bacterial_Spot": "التبقع البكتيري",
+    "Bacterial Spot": "التبقع البكتيري",
+    "Spider_Mites": "العناكب الحمراء",
+    "Spider Mites": "العناكب الحمراء",
+    "Leaf_Mites": "أكاروسات الأوراق",
+    "Leaf Mites": "أكاروسات الأوراق",
+    "Mosaic_Virus": "فيروس الموزاييك",
+    "Mosaic Virus": "فيروس الموزاييك",
+    "Yellow_Leaf_Curl_Virus": "فيروس تجعد واصفرار الأوراق",
+    "Yellow Leaf Curl Virus": "فيروس تجعد واصفرار الأوراق",
+    "Leaf Spot": "تبقع الأوراق",
+    "No_Detection": "لا يوجد كشف",
+
+    # Weather descriptions
+    "scattered clouds": "غيوم متفرقة",
+    "Scattered clouds": "غيوم متفرقة",
+    "few clouds": "غيوم قليلة",
+    "Few clouds": "غيوم قليلة",
+    "clear sky": "سماء صافية",
+    "Clear sky": "سماء صافية",
+    "broken clouds": "غيوم متقطعة",
+    "Broken clouds": "غيوم متقطعة",
+    "overcast clouds": "غيوم كثيفة",
+    "Overcast clouds": "غيوم كثيفة",
+    "light rain": "أمطار خفيفة",
+    "moderate rain": "أمطار متوسطة",
+
+    # Common procedures and sentences
+    "Monitor EC and irrigation": "راقب قيمة EC ونظام الري",
+    "Monitor EC": "راقب قيمة EC",
+    "Correct pH carefully": "صحّح قيمة pH بحذر",
+    "Adjust pH gradually": "عدّل قيمة pH تدريجيًا",
+    "High salinity/nutrient level": "ارتفاع الملوحة أو مستوى المغذيات",
+    "high salinity/nutrient level": "ارتفاع الملوحة أو مستوى المغذيات",
+    "Alkaline soil": "تربة قلوية",
+    "Remove infected lower leaves and old plant debris.": "أزل الأوراق السفلية المصابة وبقايا النبات القديمة.",
+    "Remove infected lower leaves.": "أزل الأوراق السفلية المصابة.",
+    "Remove old plant debris.": "أزل بقايا النباتات القديمة.",
+    "Keep leaves dry.": "حافظ على جفاف الأوراق.",
+    "Keep tomato leaves dry and improve ventilation when humidity is high.": "حافظ على جفاف أوراق البندورة وحسّن التهوية عند ارتفاع الرطوبة.",
+    "Improve airflow around this node.": "حسّن حركة الهواء حول هذه العقدة.",
+    "Improve airflow.": "حسّن حركة الهواء.",
+    "Improve ventilation": "حسّن التهوية.",
+    "Use mulch to reduce soil splash.": "استخدم الغطاء العضوي لتقليل تطاير التربة.",
+    "Use mulch to reduce splash.": "استخدم الغطاء العضوي لتقليل تطاير التربة.",
+    "Avoid overhead irrigation.": "تجنّب الري من الأعلى.",
+    "Avoid overhead watering.": "تجنّب الري من الأعلى.",
+    "Clean tools after removing infected leaves.": "نظّف الأدوات بعد إزالة الأوراق المصابة.",
+    "Inspect lower leaves for spots or mold.": "افحص الأوراق السفلية بحثًا عن بقع أو عفن.",
+    "Inspect lower leaves for spots or mold": "افحص الأوراق السفلية بحثًا عن بقع أو عفن",
+    "Ventilate during suitable hours.": "قم بالتهوية خلال الساعات المناسبة.",
+    "Continue normal monitoring and ventilation.": "استمر بالمراقبة والتهوية الطبيعية.",
+    "Follow the forecast advice and continue monitoring tomato plants.": "اتبع توصيات الطقس واستمر بمراقبة نباتات البندورة.",
+    "High humidity may increase disease risk if leaves stay wet.": "الرطوبة المرتفعة قد تزيد خطر الأمراض إذا بقيت الأوراق مبللة.",
+    "high humidity may increase disease risk if leaves stay wet.": "الرطوبة المرتفعة قد تزيد خطر الأمراض إذا بقيت الأوراق مبللة.",
+    "No major outside weather risk for tomato plants is expected.": "لا يُتوقع وجود خطر طقس خارجي كبير على نباتات البندورة.",
+    "pH/EC problems stress plants but do not directly cause fungal/viral disease.": "مشكلات pH و EC تُجهد النبات، لكنها لا تسبب الأمراض الفطرية أو الفيروسية بشكل مباشر.",
+    "Inspect nodes with": "افحص أولًا العقد التي حالتها",
+    "If disease matches a node, apply disease actions on that node first.": "إذا كان المرض مطابقًا لعقدة معينة، طبّق إجراءات المرض على تلك العقدة أولًا.",
+    "Correct abnormal pH/EC because plant stress can worsen disease impact.": "صحّح قيم pH و EC غير الطبيعية لأن إجهاد النبات قد يزيد تأثير المرض.",
+    "Move the camera closer to the tomato leaves.": "قرّب الكاميرا من أوراق البندورة.",
+    "Make sure the plant leaf fills most of the image.": "تأكد أن الورقة تملأ معظم الصورة.",
+    "Use good lighting and avoid strong glare or shadow.": "استخدم إضاءة جيدة وتجنب الوهج أو الظلال القوية.",
+    "Hold the phone steady and keep the image focused.": "ثبّت الهاتف جيدًا واجعل الصورة واضحة.",
+    "Retake the image and run detection again.": "أعد التقاط الصورة وشغّل الكشف مرة أخرى.",
+}
+
+
+def safe_english_replace(text, replacements):
+    # Replace full English words/phrases only. This prevents:
+    # Monitor -> Monitأو, Correct -> Cأوrect, INFORMATION -> INFORMATIتشغيل.
+    for en in sorted(replacements, key=len, reverse=True):
+        ar = replacements[en]
+        pattern = r"(?<![A-Za-z])" + re.escape(en) + r"(?![A-Za-z])"
+        text = re.sub(pattern, ar, text)
+    return text
+
+
+def arabic_final_cleanup(text):
+    # Fix outputs produced by older versions if they appear in the message.
+    fixes = {
+        "Monitأو EC والري": "راقب قيمة EC ونظام الري",
+        "Monitأو EC": "راقب قيمة EC",
+        "Cأوrect pH carefully": "صحّح قيمة pH بحذر",
+        "Sensأو Thing": "قراءات المستشعرات",
+        "معلومات الطقسRMATIتشغيل": "🌤 معلومات الطقس",
+        "Outside الحرارةerature": "درجة الحرارة الخارجية",
+        "Outside الرطوبة": "الرطوبة الخارجية",
+        "الرياح Speed": "سرعة الرياح",
+        "Weather الحالة": "حالة الطقس",
+        "Tomato Weather خطر": "مخاطر الطقس على البندورة",
+        "Farmer procedures": "إجراءات المزارع",
+        "مرتفع humidity may increase disease risk if leaves stay wet.": "الرطوبة المرتفعة قد تزيد خطر الأمراض إذا بقيت الأوراق مبللة.",
+        "Inspect lower leaves fأو spots أو mold.": "افحص الأوراق السفلية بحثًا عن بقع أو عفن.",
+        "Latest البيت البلاستيكي": "آخر بيت بلاستيكي",
+        "Latest Live العقدة": "آخر عقدة مباشرة",
+        "العقدة update": "وقت تحديث العقدة",
+        "المرض المطابق نتيجة": "نتيجة المرض المطابق",
+        "مخاطر الطقس ملخص": "ملخص مخاطر الطقس",
+        "تحذير first": "تحذير أولًا",
+        "خطير أو 🟡 تحذير أولًا.": "خطير أو 🟡 تحذير.",
+        "تبقع سبتوريا تبقع الأوراق": "تبقع سبتوريا",
+        "✅ تم تحديث الطقسRMATIتشغيل": "✅ تم تحديث الطقس",
+    }
+    for bad, good in fixes.items():
+        text = text.replace(bad, good)
+
+    # Clean remaining common English punctuation/labels.
+    text = text.replace("Problem:", "المشكلة:")
+    text = text.replace("Action:", "الإجراء:")
+    text = text.replace("Detected:", "تم الكشف عن:")
+    text = text.replace("Most likely:", "الأكثر احتمالًا:")
+    text = text.replace("images:", "عدد الصور:")
+    text = text.replace("— الصور:", "— عدد الصور:")
+    text = text.replace("— images:", "— عدد الصور:")
+    text = text.replace("total ", "المجموع ")
+    text = text.replace("infected ", "مصابة ")
+    text = text.replace("healthy ", "سليمة ")
+    text = text.replace("no detection ", "لا يوجد كشف ")
+    text = text.replace(" ;", "؛")
+    text = text.replace("; ", "؛ ")
+    text = text.replace(" → ", " ← ")
+
+    # Arabic tidy-up.
+    text = re.sub(r" +\n", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+
 def to_arabic_text(text):
     text = remove_farmer_unfriendly_lines(text)
 
-    # Keep units, numbers, IDs, and symbols. Translate labels and repeated scientific wording.
-    # Longer phrases first to avoid partial replacement problems.
-    for en in sorted(AR_REPLACEMENTS, key=len, reverse=True):
-        text = text.replace(en, AR_REPLACEMENTS[en])
+    # First translate exact/common phrases safely.
+    merged = {}
+    try:
+        merged.update(AR_REPLACEMENTS)
+    except Exception:
+        pass
+    try:
+        merged.update(AR_EXTRA_REPLACEMENTS)
+    except Exception:
+        pass
+    merged.update(ARABIC_FULL_REPLACEMENTS)
 
-    for en in sorted(AR_EXTRA_REPLACEMENTS, key=len, reverse=True):
-        text = text.replace(en, AR_EXTRA_REPLACEMENTS[en])
+    text = safe_english_replace(text, merged)
 
-    # Additional line-level cleanup for common English report lines.
-    line_replacements = [
-        (r"No sensor readings were found", "لم يتم العثور على قراءات مستشعرات"),
-        (r"No matched disease image result for this node", "لا توجد نتيجة صورة مرض مطابقة لهذه العقدة"),
-        (r"Capture tomato leaf images if symptoms are visible", "التقط صورًا لأوراق البندورة إذا ظهرت أعراض واضحة"),
-        (r"Check irrigation", "افحص نظام الري"),
-        (r"Improve ventilation", "حسّن التهوية"),
-        (r"Monitor EC", "راقب قيمة EC"),
-        (r"Correct pH carefully", "صحّح قيمة pH بحذر"),
-        (r"Adjust pH gradually", "عدّل قيمة pH تدريجيًا"),
-        (r"Remove infected leaves", "أزل الأوراق المصابة"),
-        (r"Avoid overhead watering", "تجنّب الري من الأعلى"),
-        (r"Increase airflow", "زِد حركة الهواء"),
-        (r"Check underside of leaves", "افحص الجهة السفلية للأوراق"),
-        (r"Control whiteflies", "كافح الذباب الأبيض"),
-        (r"Use clean tools", "استخدم أدوات نظيفة"),
-        (r"Keep leaves dry", "حافظ على جفاف الأوراق"),
-        (r"Monitor the plant", "راقب النبات"),
+    # Extra regex translations for phrases that may vary.
+    regex_replacements = [
+        (r"Monitor EC and irrigation", "راقب قيمة EC ونظام الري"),
+        (r"Monitor EC", "راقب قيمة EC"),
+        (r"Correct pH carefully", "صحّح قيمة pH بحذر"),
+        (r"High humidity may increase disease risk if leaves stay wet\.?", "الرطوبة المرتفعة قد تزيد خطر الأمراض إذا بقيت الأوراق مبللة."),
+        (r"Inspect lower leaves for spots or mold\.?", "افحص الأوراق السفلية بحثًا عن بقع أو عفن."),
+        (r"High salinity/nutrient level", "ارتفاع الملوحة أو مستوى المغذيات"),
+        (r"Alkaline soil", "تربة قلوية"),
     ]
-    for pat, repl in line_replacements:
-        text = re.sub(pat, repl, text, flags=re.IGNORECASE)
+    for pat, repl in regex_replacements:
+        text = re.sub(pat, repl, text)
 
-    text = text.replace("— صور:", "— عدد الصور:")
-    text = text.replace("— images:", "— عدد الصور:")
-    text = text.replace("; ", "؛ ")
-    text = text.replace(" ;", "؛")
-    text = text.replace(" → ", " ← ")
-
-    return text.strip()
+    return arabic_final_cleanup(text)
 
 
 def localized_text(text, chat_id=None, translate=True):
